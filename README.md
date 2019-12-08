@@ -31,6 +31,12 @@ Currently, only meshes are supported. The exporter uses the [bufferGeometry](htt
 
 ![Triceratops menu](threejs-exporter-icons/triceratops-panel.png)
 
+## Example Scene
+
+The example scene demonstrates how to export meshes with various materials and settings.
+
+![example scene](threejs-exporter-icons/example_scene.PNG)
+
 ## Development Environment
 
 The plugin was developed in Visual Studio using the [Grasshopper plugin template](https://marketplace.visualstudio.com/items?itemName=McNeel.GrasshopperAssemblyforv6). The [Visual Studio project folder](https://github.com/meliharvey/Triceratops/tree/master/threejs-exporter) is included in this repository.
