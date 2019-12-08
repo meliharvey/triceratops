@@ -13,10 +13,10 @@ Triceratops is a Grasshopper exporter made for web developers that use Three.js.
 * Go to [Triceratops page at Food4Rhino](https://www.food4rhino.com/app/triceratops) and download the project .zip folder. 
 * Extract the files from the .zip folder.
 * Place the .gha file in your grasshopper components folder. This can be found from Grasshopper at:
-File > Special Folders > Components Folder
+  File > Special Folders > Components Folder
 
-or often at the following location on your C drive:
-C:\Users\[your username]\AppData\Roaming\Grasshopper\Libraries
+  or often at the following location on your C drive:
+  C:\Users\[your username]\AppData\Roaming\Grasshopper\Libraries
 * Restart, or start a new instance of Rhino/Grasshopper
 
 ## Output
