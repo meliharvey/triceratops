@@ -59,6 +59,11 @@ The plugin was developed in Visual Studio using the [Grasshopper plugin template
 
 ## Next steps
 
-* line geometry
-* meshPhongMaterial
-* meshLambertMaterial
+* line geometry component
+* meshPhongMaterial component
+* meshLambertMaterial component
+* point light component
+* directional light component
+* area light component
+* userData component to be fed into the mesh component (i.e for coloring meshes on the fly in the browser)
+* camera component
