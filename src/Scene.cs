@@ -51,7 +51,7 @@ namespace triceratops
             dynamic metadata = new ExpandoObject();
             metadata.version = 4.3;
             metadata.type = "Object";
-            metadata.generator = "Meli's Threejs Object Generator";
+            metadata.generator = "TriceratopsExporter";
 
             /// Scene
             dynamic scene = new ExpandoObject();

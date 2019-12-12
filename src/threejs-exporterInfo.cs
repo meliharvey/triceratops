@@ -26,7 +26,7 @@ namespace triceratops
         get
         {
             //Return a short string describing the purpose of this GHA library.
-            return "";
+            return "Triceratops builds a Three.js scene from Grasshopper geometry.";
         }
     }
     public override Guid Id
@@ -42,7 +42,7 @@ namespace triceratops
         get
         {
             //Return a string identifying you or your company.
-            return "";
+            return "Amelia Harvey";
         }
     }
     public override string AuthorContact
@@ -50,7 +50,7 @@ namespace triceratops
         get
         {
             //Return a string representing your preferred contact details.
-            return "";
+            return "meliharvey87@gmail.com";
         }
     }
 }
