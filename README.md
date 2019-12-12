@@ -10,7 +10,7 @@ Triceratops is a Grasshopper exporter made for web developers that use Three.js.
 
 ## Install
 
-* Go to [Triceratops page at Food4Rhino](https://www.food4rhino.com/app/triceratops) and download the project .zip folder. 
+* Go to [Triceratops page at Food4Rhino](https://www.food4rhino.com/app/triceratops) and download the project .zip folder.
 * Extract the files from the .zip folder.
 * Place the .gha file in your grasshopper components folder. This can be found from Grasshopper at:
   File > Special Folders > Components Folder
@@ -34,11 +34,11 @@ Currently, only meshes are supported. The exporter uses the [bufferGeometry](htt
 **Geometry**
 * ![Mesh](threejs-exporter-icons/Mesh.png) **Mesh** builds a Three.js bufferGeometry object of type from mesh geometry. It requires a material input that is associated with the mesh.
 * ![MeshVertexColors](threejs-exporter-icons/MeshVertexColors.png) **MeshVertexColors** builds a Three.js mesh object with vertex colors.
-* ![MeshColorFaces](threejs-exporter-icons/MeshColorFaces.png) **MeshColorFaces** unwelds all mesh edges and colors vertices based on mesh faces. 
+* ![MeshColorFaces](threejs-exporter-icons/MeshColorFaces.png) **MeshColorFaces** unwelds all mesh edges and colors vertices based on mesh faces.
 
 **Materials**
 * ![MeshNormalMaterial](threejs-exporter-icons/MeshNormalMaterial.png) **MeshNormalMaterial** creates a Three.js material object of the meshNormalMaterial type. This material colors mesh faces based on their normal.
-* ![MeshBasicMaterial](threejs-exporter-icons/MeshBasicMaterial.png) **MeshBasicMaterial** creates a Three.js material object of the meshBasicMaterial type. This material gives a mesh a solid color that does not react to scene lighting or shadows. 
+* ![MeshBasicMaterial](threejs-exporter-icons/MeshBasicMaterial.png) **MeshBasicMaterial** creates a Three.js material object of the meshBasicMaterial type. This material gives a mesh a solid color that does not react to scene lighting or shadows.
 * ![MeshPhongMaterial](threejs-exporter-icons/MeshPhongMaterial.png) **MeshPhongMaterial** creates a Three.js material object of the meshPhongMaterial type. This material can simulate shiny materials and react to scene lighting and shadows.
 * ![MeshStandardMaterial](threejs-exporter-icons/MeshStandardMaterial.png) **MeshStandardMaterial** creates a Three.js material object of the meshStandardMaterial class. This material uses physically based rendering to make a material that reacts to light in a realistic way.
 
@@ -59,6 +59,8 @@ The plugin was developed in Visual Studio using the [Grasshopper plugin template
 
 ## Next steps
 
+* optional face indexing for meshes
+* run button for JSON writing component
 * line geometry component
 * meshPhongMaterial component
 * meshLambertMaterial component
