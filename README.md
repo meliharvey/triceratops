@@ -1,6 +1,6 @@
 # Triceratops
 
-![Triceratops logo](threejs-exporter-icons/triceratops-logo-small.png)
+![Triceratops logo](assets/triceratops-logo-small.png)
 
 Triceratops is a Grasshopper plugin that exports geometry from Grasshopper to a JSON file in the Three.js object scene format.
 
@@ -29,29 +29,29 @@ Currently, only meshes are supported. The exporter uses the [bufferGeometry](htt
 
 ## Tools
 
-![Triceratops menu](threejs-exporter-icons/triceratops-panel.png)
+![Triceratops menu](assets/triceratops-panel.png)
 
 **Geometry**
-* ![Mesh](threejs-exporter-icons/Mesh.png) **Mesh** builds a Three.js bufferGeometry object of type from mesh geometry. It requires a material input that is associated with the mesh.
-* ![MeshVertexColors](threejs-exporter-icons/MeshVertexColors.png) **MeshVertexColors** builds a Three.js mesh object with vertex colors.
-* ![MeshColorFaces](threejs-exporter-icons/MeshColorFaces.png) **MeshColorFaces** unwelds all mesh edges and colors vertices based on mesh faces.
+* ![Mesh](assets/Mesh.png) **Mesh** builds a Three.js bufferGeometry object of type from mesh geometry. It requires a material input that is associated with the mesh.
+* ![MeshVertexColors](assets/MeshVertexColors.png) **MeshVertexColors** builds a Three.js mesh object with vertex colors.
+* ![MeshColorFaces](assets/MeshColorFaces.png) **MeshColorFaces** unwelds all mesh edges and colors vertices based on mesh faces.
 
 **Materials**
-* ![MeshNormalMaterial](threejs-exporter-icons/MeshNormalMaterial.png) **MeshNormalMaterial** creates a Three.js material object of the meshNormalMaterial type. This material colors mesh faces based on their normal.
-* ![MeshBasicMaterial](threejs-exporter-icons/MeshBasicMaterial.png) **MeshBasicMaterial** creates a Three.js material object of the meshBasicMaterial type. This material gives a mesh a solid color that does not react to scene lighting or shadows.
-* ![MeshPhongMaterial](threejs-exporter-icons/MeshPhongMaterial.png) **MeshPhongMaterial** creates a Three.js material object of the meshPhongMaterial type. This material can simulate shiny materials and react to scene lighting and shadows.
-* ![MeshStandardMaterial](threejs-exporter-icons/MeshStandardMaterial.png) **MeshStandardMaterial** creates a Three.js material object of the meshStandardMaterial class. This material uses physically based rendering to make a material that reacts to light in a realistic way.
+* ![MeshNormalMaterial](assets/MeshNormalMaterial.png) **MeshNormalMaterial** creates a Three.js material object of the meshNormalMaterial type. This material colors mesh faces based on their normal.
+* ![MeshBasicMaterial](assets/MeshBasicMaterial.png) **MeshBasicMaterial** creates a Three.js material object of the meshBasicMaterial type. This material gives a mesh a solid color that does not react to scene lighting or shadows.
+* ![MeshPhongMaterial](assets/MeshPhongMaterial.png) **MeshPhongMaterial** creates a Three.js material object of the meshPhongMaterial type. This material can simulate shiny materials and react to scene lighting and shadows.
+* ![MeshStandardMaterial](assets/MeshStandardMaterial.png) **MeshStandardMaterial** creates a Three.js material object of the meshStandardMaterial class. This material uses physically based rendering to make a material that reacts to light in a realistic way.
 
 **Scene**
-* ![Scene](threejs-exporter-icons/Scene.png) **Scene** creates a Scene object from one or more mesh geometries.
-* ![ExportJSON](threejs-exporter-icons/ExportJSON.png) **ExportJSON** creates a JSON string from a scene and saves it to a desired location.
-* ![RelativePath](threejs-exporter-icons/RelativePath.png) **RelativePath** generates the file path to the location where the grasshopper is saved.
+* ![Scene](assets/Scene.png) **Scene** creates a Scene object from one or more mesh geometries.
+* ![ExportJSON](assets/ExportJSON.png) **ExportJSON** creates a JSON string from a scene and saves it to a desired location.
+* ![RelativePath](assets/RelativePath.png) **RelativePath** generates the file path to the location where the grasshopper is saved.
 
 ## Example Scene
 
 The example scene demonstrates how to export meshes with various materials and settings.
 
-![example scene](threejs-exporter-icons/example_scene.PNG)
+![example scene](assets/example_scene.PNG)
 
 ## Development Environment
 
