@@ -1,6 +1,6 @@
 # Triceratops
 
-![Triceratops logo](assets/triceratops-logo-small.png)
+![Triceratops logo](assets/triceratops-logo-medium.png)
 
 Triceratops is a Grasshopper plugin that exports geometry from Grasshopper to a JSON file in the Three.js object scene format.
 
