@@ -4,18 +4,18 @@ using System.Collections.Generic;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-namespace triceratops
+namespace Triceratops
 {
-    public class MeshWrapper
+    public class GeometryWrapper
     {
         public dynamic Geometry;
-        public dynamic Children;
+        public dynamic Child;
         public dynamic Material;
 
-        public MeshWrapper(dynamic geometry, dynamic children, dynamic material)
+        public GeometryWrapper(dynamic geometry, dynamic child, dynamic material)
         {
             Geometry = geometry;
-            Children = children;
+            Child = child;
             Material = material;
         }
     }

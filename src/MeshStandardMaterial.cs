@@ -7,7 +7,7 @@ using Grasshopper.Kernel;
 using Rhino.Geometry;
 using Newtonsoft.Json;
 
-namespace triceratops
+namespace Triceratops
 {
     public class MeshStandardMaterial : GH_Component
     {
@@ -19,6 +19,15 @@ namespace triceratops
               "Create a MeshStandardMaterial.",
               "Triceratops", "Materials")
         {
+        }
+
+        // Place in second partition
+        public override GH_Exposure Exposure
+        {
+            get
+            {
+                return GH_Exposure.primary;
+            }
         }
 
         /// <summary>
@@ -52,7 +61,7 @@ namespace triceratops
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            
+            // Declare variables
             Color color = Color.White;
             double opacity = 1;
             double roughness = 1;
@@ -63,6 +72,7 @@ namespace triceratops
             string wireframeLinejoin = "round";
             double wireframeLinewidth = 1;
 
+            // Reference inputs
             DA.GetData(0, ref color);
             DA.GetData(1, ref opacity);
             DA.GetData(2, ref roughness);
@@ -73,6 +83,7 @@ namespace triceratops
             DA.GetData(7, ref wireframeLinejoin);
             DA.GetData(8, ref wireframeLinewidth);
 
+            // Create the material object
             dynamic material = new ExpandoObject();
             material.uuid = Guid.NewGuid();
             material.type = "MeshStandardMaterial";

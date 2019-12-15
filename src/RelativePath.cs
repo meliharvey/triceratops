@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-namespace triceratops
+namespace Triceratops
 {
     public class RelativePath : GH_Component
     {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Dynamic;
 
 using Grasshopper.Kernel;
@@ -8,14 +9,14 @@ using Newtonsoft.Json;
 
 namespace Triceratops
 {
-    public class MeshNormalMaterial : GH_Component
+    public class LineDashedMaterial : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the MeshNormalMaterial class.
+        /// Initializes a new instance of the LineDashedMaterial class.
         /// </summary>
-        public MeshNormalMaterial()
-          : base("MeshNormalMaterial", "NormalMat",
-              "Create a MeshNormalMaterial.",
+        public LineDashedMaterial()
+          : base("LineDashedMaterial", "LineDashMat",
+              "Description",
               "Triceratops", "Materials")
         {
         }
@@ -25,7 +26,7 @@ namespace Triceratops
         {
             get
             {
-                return GH_Exposure.primary;
+                return GH_Exposure.secondary;
             }
         }
 
@@ -34,9 +35,10 @@ namespace Triceratops
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddBooleanParameter("Wireframe", "W", "Display as wireframe", GH_ParamAccess.item, false);
-            pManager.AddTextParameter("WireframeLineJoin", "J", "Style of wireframe joins ('round', 'miter', or 'bevel'", GH_ParamAccess.item, "round");
-            pManager.AddNumberParameter("WireframeLineWidth", "L", "The width of the wireframe line", GH_ParamAccess.item, 1);
+            pManager.AddColourParameter("Color", "C", "The line color", GH_ParamAccess.item);
+            pManager.AddNumberParameter("LineWidth", "W", "Line width", GH_ParamAccess.item, 1);
+            pManager.AddNumberParameter("DashSize", "D", "The length of the dash", GH_ParamAccess.item, 3);
+            pManager.AddNumberParameter("GapSize", "G", "The length of the gap", GH_ParamAccess.item, 1);
         }
 
         /// <summary>
@@ -44,8 +46,8 @@ namespace Triceratops
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("JSON", "J", "JSON string", GH_ParamAccess.item);
-            pManager.AddGenericParameter("Material", "M", "Threejs material", GH_ParamAccess.item);
+            pManager.AddGenericParameter("JSON", "J", "Material's JSON string", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Line Material", "M", "The line material object", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -55,26 +57,30 @@ namespace Triceratops
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             // Declare variables
-            bool wireframe = false;
-            string wireframeLinejoin = "round";
-            double wireframeLinewidth = 1;
+            Color color = Color.White;
+            double linewidth = 1;
+            double dashSize = 1;
+            double gapSize = 1;
 
             // Reference the inputs
-            DA.GetData(0, ref wireframe);
-            DA.GetData(1, ref wireframeLinejoin);
-            DA.GetData(2, ref wireframeLinewidth);
+            DA.GetData(0, ref color);
+            DA.GetData(1, ref linewidth);
+            DA.GetData(2, ref dashSize);
+            DA.GetData(3, ref gapSize);
 
-            // Create material object
+            // Build the material object
             dynamic material = new ExpandoObject();
             material.uuid = Guid.NewGuid();
-            material.type = "MeshNormalMaterial";
-            material.wireframe = wireframe;
-            material.wireframeLinejoin = wireframeLinejoin;
-            material.wireframeLinewidth = wireframeLinewidth;
+            material.type = "LineDashedMaterial";
+            material.color = Convert.ToInt32(color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2"), 16);
+            material.linewidth = linewidth;
+            material.dashSize = dashSize;
+            material.gapSize = gapSize;
 
-            /// Wrap the material
+            // Wrap the material
             MaterialWrapper wrapper = new MaterialWrapper(material);
 
+            // Serialize
             string JSON = JsonConvert.SerializeObject(material);
 
             DA.SetData(0, JSON);
@@ -90,7 +96,7 @@ namespace Triceratops
             {
                 //You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
-                return Properties.Resources.MeshNormalMaterial;
+                return Properties.Resources.LineDashedMaterial;
             }
         }
 
@@ -99,7 +105,7 @@ namespace Triceratops
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("d35efd52-3d80-4eac-865f-b3f8597214e3"); }
+            get { return new Guid("2b431a61-7766-40cf-99f4-7753206d0298"); }
         }
     }
 }

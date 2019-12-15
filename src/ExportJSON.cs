@@ -7,7 +7,7 @@ using Grasshopper.Kernel;
 using Rhino.Geometry;
 using Newtonsoft.Json;
 
-namespace triceratops
+namespace Triceratops
 {
     public class ExportJSON : GH_Component
     {
@@ -29,6 +29,7 @@ namespace triceratops
             pManager.AddTextParameter("Path", "P", "Path to file directory", GH_ParamAccess.item);
             pManager.AddTextParameter("File Name", "N", "CSV file name", GH_ParamAccess.item);
             pManager.AddGenericParameter("Data", "D", "Data as a list of strings", GH_ParamAccess.item);
+            pManager.AddBooleanParameter("Write", "W", "Write the JSON", GH_ParamAccess.item, false);
         }
 
         /// <summary>
@@ -45,19 +46,33 @@ namespace triceratops
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+            // Declare variables
             string path = null;
             string name = null;
             SceneWrapper exportObject = null;
+            bool write = false;
 
+            // Reference the inputs
             DA.GetData(0, ref path);
             DA.GetData(1, ref name);
             DA.GetData(2, ref exportObject);
+            DA.GetData(3, ref write);
 
+            // Create filepath
             string filePath = path + "\\" + name + ".json";
+
+            // Serialize the object tree
             string JSON = JsonConvert.SerializeObject(exportObject.ExportObject);
 
-            File.WriteAllText(filePath, JSON);
+            // Write the JSON only when the run input is true
+            if (write)
+                File.WriteAllText(filePath, JSON);
 
+            // If the write input is not true, trigger a warning
+            else
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Toggle to true to export JSON");
+                
+            // Set the outputs
             DA.SetData(0, filePath);
         }
 

@@ -6,7 +6,7 @@ using Grasshopper.Kernel;
 using Rhino.Geometry;
 using Newtonsoft.Json;
 
-namespace triceratops
+namespace Triceratops
 {
     public class Scene : GH_Component
     {
@@ -43,8 +43,10 @@ namespace triceratops
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            List<MeshWrapper> geometries = new List<MeshWrapper>();
+            // Declare variables
+            List<GeometryWrapper> geometries = new List<GeometryWrapper>();
 
+            // Reference the inputs
             DA.GetDataList(0, geometries);
 
             /// Metadata
@@ -61,40 +63,42 @@ namespace triceratops
             scene.matrix = new List<double> { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 };
             scene.children = new List<dynamic>();
 
-            List<dynamic> materials = new List<dynamic>();
-            List<string> materialIds = new List<string>();
-
+            // Create the export object
             dynamic exportObject = new ExpandoObject();
             exportObject.metadata = metadata;
             exportObject.geometries = new List<dynamic>();
 
+            // Create a list for materials, and track ids to ensure no duplicates
+            List<dynamic> materials = new List<dynamic>();
+            List<string> materialIds = new List<string>();
+
             /// Loop over all of the imported geometries to add to object
-            foreach (MeshWrapper geometry in geometries)
+            foreach (GeometryWrapper geometry in geometries)
             {
-                Console.WriteLine(geometry.Material.uuid.ToString());
+                // Add the child objects
+                scene.children.Add(geometry.Child);
+                exportObject.geometries.Add(geometry.Geometry);
 
-                foreach (dynamic child in geometry.Children)
-                    scene.children.Add(child);
-
-                foreach (dynamic bufferGeometry in geometry.Geometry)
-                    exportObject.geometries.Add(bufferGeometry);
-
-                /// If material doesn't exist yet, add it
-                if (!materialIds.Contains(geometry.Material.uuid.ToString()))
-                {
-                    materials.Add(geometry.Material);
-                    materialIds.Add(geometry.Material.uuid.ToString());
-                }
+                if (geometry.Material != null)
+                /// If a material exists and it hasn't been added to the scene yet, add it to the scene 
+                    if (!materialIds.Contains(geometry.Material.uuid.ToString()))
+                    {
+                        materials.Add(geometry.Material);
+                        materialIds.Add(geometry.Material.uuid.ToString());
+                    }
             }
 
+            // Add materials and object to the export object
             exportObject.materials = materials;
             exportObject.@object = scene;
 
+            // Create a JSON string
             string JSON = JsonConvert.SerializeObject(exportObject);
 
             /// Wrap the bufferGeometries and children to the wrapper
             SceneWrapper wrapper = new SceneWrapper(exportObject);
 
+            // Set the outputs
             DA.SetData(0, JSON);
             DA.SetData(1, wrapper);
         }

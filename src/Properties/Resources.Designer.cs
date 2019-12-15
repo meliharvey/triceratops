@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace triceratops.Properties {
+namespace Triceratops.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace triceratops.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("triceratops.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Triceratops.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -83,6 +83,26 @@ namespace triceratops.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LineBasicMaterial {
+            get {
+                object obj = ResourceManager.GetObject("LineBasicMaterial", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LineDashedMaterial {
+            get {
+                object obj = ResourceManager.GetObject("LineDashedMaterial", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Mesh {
             get {
                 object obj = ResourceManager.GetObject("Mesh", resourceCulture);
@@ -106,16 +126,6 @@ namespace triceratops.Properties {
         internal static System.Drawing.Bitmap MeshColorFaces {
             get {
                 object obj = ResourceManager.GetObject("MeshColorFaces", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap MeshFaceAttributes {
-            get {
-                object obj = ResourceManager.GetObject("MeshFaceAttributes", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

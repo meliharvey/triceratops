@@ -8,8 +8,8 @@
     <ProjectGuid>{0EE1240F-D8E2-487A-9F2B-9C0344379FFC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>triceratops</RootNamespace>
-    <AssemblyName>triceratops</AssemblyName>
+    <RootNamespace>Triceratops</RootNamespace>
+    <AssemblyName>Triceratops</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -64,12 +64,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes.cs" />
+    <Compile Include="LineBasicMaterial.cs" />
+    <Compile Include="LineDashedMaterial.cs" />
     <Compile Include="MeshColorFaces.cs" />
     <Compile Include="MeshBasicMaterial.cs" />
     <Compile Include="MeshNormalMaterial.cs" />
     <Compile Include="MeshStandardMaterial.cs" />
     <Compile Include="ExportJSON.cs" />
     <Compile Include="MeshVertexColors.cs" />
+    <Compile Include="Line.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -92,9 +95,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\threejs-exporter-icons-04.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Line.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MeshBasicMaterial.png" />
@@ -131,6 +131,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MeshColorFaces.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LineBasicMaterial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LineDashedMaterial.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

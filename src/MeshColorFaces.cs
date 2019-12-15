@@ -5,7 +5,7 @@ using System.Drawing;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-namespace triceratops
+namespace Triceratops
 {
     public class MeshColorFaces : GH_Component
     {
@@ -17,6 +17,15 @@ namespace triceratops
               "Color the faces of a mesh by unwelding edges.",
               "Triceratops", "Geometry")
         {
+        }
+
+        // Place in a partition
+        public override GH_Exposure Exposure
+        {
+            get
+            {
+                return GH_Exposure.primary;
+            }
         }
 
         /// <summary>
@@ -42,13 +51,16 @@ namespace triceratops
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+            // Declare variables
             Rhino.Geometry.Mesh mesh = null;
             List<Color> faceColors = new List<Color>();
 
+            // Reference the inputs
             DA.GetData(0, ref mesh);
             if (!DA.GetDataList(1, faceColors))
                 return;
 
+            //Unweld the mesh so each face has its own unique set of vertices that can be colored
             mesh.Unweld(0, true);
 
             // A list of all vertex colors needs to be added first
@@ -68,6 +80,7 @@ namespace triceratops
                 mesh.VertexColors.SetColor(vertexIndices.D, faceColors[i]);
             }
 
+            // Set the outputs
             DA.SetData(0, mesh);
         }
 

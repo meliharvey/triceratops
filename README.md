@@ -25,22 +25,26 @@ The plugin produces as a JSON with using the [Three.js object scene format](http
 
 ## Supported Geometry
 
-Currently, only meshes are supported. The exporter uses the [bufferGeometry](https://threejs.org/docs/#api/en/core/BufferGeometry) format for meshes.
+Currently, meshes and lines are supported. The exporter uses the [bufferGeometry](https://threejs.org/docs/#api/en/core/BufferGeometry) format for defining geometry. All meshes use face indexing.
 
 ## Tools
 
 ![Triceratops menu](assets/triceratops-panel.png)
 
 **Geometry**
-* ![Mesh](assets/Mesh.png) **Mesh** builds a Three.js bufferGeometry object of type from mesh geometry. It requires a material input that is associated with the mesh.
+* ![Mesh](assets/Mesh.png) **Mesh** builds a Three.js BufferGeometry object type from mesh geometry. If no material is defined Three.js will automatically assign MeshBasicMaterial with randomly assigned colors.
 * ![MeshVertexColors](assets/MeshVertexColors.png) **MeshVertexColors** builds a Three.js mesh object with vertex colors.
 * ![MeshColorFaces](assets/MeshColorFaces.png) **MeshColorFaces** unwelds all mesh edges and colors vertices based on mesh faces.
+* ![Line](assets/Line.png) **Line** builds a Three.js BufferGeometry object type from line geometry. If no material is defined Three.js will automatically assign LineBasicMaterial with randomly assigned colors.
 
 **Materials**
-* ![MeshNormalMaterial](assets/MeshNormalMaterial.png) **MeshNormalMaterial** creates a Three.js material object of the meshNormalMaterial type. This material colors mesh faces based on their normal.
-* ![MeshBasicMaterial](assets/MeshBasicMaterial.png) **MeshBasicMaterial** creates a Three.js material object of the meshBasicMaterial type. This material gives a mesh a solid color that does not react to scene lighting or shadows.
-* ![MeshPhongMaterial](assets/MeshPhongMaterial.png) **MeshPhongMaterial** creates a Three.js material object of the meshPhongMaterial type. This material can simulate shiny materials and react to scene lighting and shadows.
-* ![MeshStandardMaterial](assets/MeshStandardMaterial.png) **MeshStandardMaterial** creates a Three.js material object of the meshStandardMaterial class. This material uses physically based rendering to make a material that reacts to light in a realistic way.
+* ![MeshNormalMaterial](assets/MeshNormalMaterial.png) **MeshNormalMaterial** creates a Three.js material object of the MeshNormalMaterial type. This material colors mesh faces based on their normal.
+* ![MeshBasicMaterial](assets/MeshBasicMaterial.png) **MeshBasicMaterial** creates a Three.js material object of the MeshBasicMaterial type. This material gives a mesh a solid color that does not react to scene lighting or shadows.
+* ![MeshPhongMaterial](assets/MeshPhongMaterial.png) **MeshPhongMaterial** creates a Three.js material object of the MeshPhongMaterial type. This material can simulate shiny materials and react to scene lighting and shadows.
+* ![MeshStandardMaterial](assets/MeshStandardMaterial.png) **MeshStandardMaterial** creates a Three.js material object of the MeshStandardMaterial class. This material uses physically based rendering to make a material that reacts to light in a realistic way.
+* ![LineBasicMaterial](assets/LineBasicMaterial.png) **LineBasicMaterial** creates a Three.js material object of the LineBasicMaterial class. This material can define a solid color for the line.
+* ![LineDashedMaterial](assets/LineDashedMaterial.png)
+**LineDashedMaterial** creates a Three.js material object of the LineDashedMaterial class. This material can define a dot-dash pattern for the line.
 
 **Scene**
 * ![Scene](assets/Scene.png) **Scene** creates a Scene object from one or more mesh geometries.
@@ -60,12 +64,13 @@ The plugin was developed in Visual Studio using the [Grasshopper plugin template
 ## Next steps
 
 * optional face indexing for meshes
-* run button for JSON writing component
-* line geometry component
-* meshPhongMaterial component
-* meshLambertMaterial component
+* vertex based line colors
+* MeshPhongMaterial component
+* MeshLambertMaterial component
 * point light component
 * directional light component
 * area light component
 * userData component to be fed into the mesh component (i.e for coloring meshes on the fly in the browser)
 * camera component
+* scene attributes (background color, fog)
+* animate objects using GH slider to control the frames

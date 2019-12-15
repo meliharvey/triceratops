@@ -7,7 +7,7 @@ using Grasshopper.Kernel;
 using Rhino.Geometry;
 using Newtonsoft.Json;
 
-namespace triceratops
+namespace Triceratops
 {
     public class MeshBasicMaterial : GH_Component
     {
@@ -19,6 +19,15 @@ namespace triceratops
               "Create a MeshBasicMaterial.",
               "Triceratops", "Materials")
         {
+        }
+
+        // Place in a partition
+        public override GH_Exposure Exposure
+        {
+            get
+            {
+                return GH_Exposure.primary;
+            }
         }
 
         /// <summary>
@@ -37,7 +46,7 @@ namespace triceratops
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("JSON", "J", "JSON string", GH_ParamAccess.item);
+            pManager.AddGenericParameter("JSON", "J", "Material's JSON string", GH_ParamAccess.item);
             pManager.AddGenericParameter("Material", "M", "Threejs material", GH_ParamAccess.item);
         }
 
@@ -47,34 +56,39 @@ namespace triceratops
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+            // Declare variables
             Color color = Color.White;
             bool wireframe = false;
             string wireframeLinejoin = "round";
             double wireframeLinewidth = 1;
 
+            // Reference the inputs
             DA.GetData(0, ref color);
             DA.GetData(1, ref wireframe);
             DA.GetData(2, ref wireframeLinejoin);
             DA.GetData(3, ref wireframeLinewidth);
 
-            
-
+            // Build the material object
             dynamic material = new ExpandoObject();
             material.uuid = Guid.NewGuid();
             material.type = "MeshBasicMaterial";
+            material.color = Convert.ToInt32(color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2"), 16);
 
-            string hexColor = color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2");
-            material.color = Convert.ToInt32(hexColor, 16);
-
-            material.wireframe = wireframe;
-            material.wireframeLinejoin = wireframeLinejoin;
-            material.wireframeLinewidth = wireframeLinewidth;
-
+            // If the wireframe is set to true, add wireframe attributes
+            if (wireframe)
+            {
+                material.wireframe = wireframe;
+                material.wireframeLinejoin = wireframeLinejoin;
+                material.wireframeLinewidth = wireframeLinewidth;
+            }
+            
             //Wrap the material
             MaterialWrapper wrapper = new MaterialWrapper(material);
 
+            // Serialize
             string JSON = JsonConvert.SerializeObject(material);
 
+            // Set the outputs
             DA.SetData(0, JSON);
             DA.SetData(1, wrapper);
         }
