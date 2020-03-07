@@ -35,10 +35,11 @@ namespace Triceratops
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddColourParameter("Color", "C", "Add a color", GH_ParamAccess.item, Color.CornflowerBlue);
-            pManager.AddBooleanParameter("Wireframe", "W", "Display as wireframe", GH_ParamAccess.item, false);
-            pManager.AddTextParameter("WireframeLineJoin", "Wj", "Style of wireframe joins ('round', 'miter', or 'bevel'", GH_ParamAccess.item, "round");
-            pManager.AddNumberParameter("WireframeLineWidth", "Wl", "The width of the wireframe line", GH_ParamAccess.item, 1);
+            pManager.AddColourParameter("Color", "C", "Add a color", GH_ParamAccess.item, Color.White);
+            pManager.AddGenericParameter("Wireframe", "W", "Display as wireframe", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Maps", "M", "Add a texture map", GH_ParamAccess.item);
+            pManager[1].Optional = true;
+            pManager[2].Optional = true;
         }
 
         /// <summary>
@@ -46,7 +47,6 @@ namespace Triceratops
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("JSON", "J", "Material's JSON string", GH_ParamAccess.item);
             pManager.AddGenericParameter("Material", "M", "Threejs material", GH_ParamAccess.item);
         }
 
@@ -58,39 +58,41 @@ namespace Triceratops
         {
             // Declare variables
             Color color = Color.White;
-            bool wireframe = false;
-            string wireframeLinejoin = "round";
-            double wireframeLinewidth = 1;
+            WireframeSettings wireframe = null;
+            Texture map = null;
 
             // Reference the inputs
             DA.GetData(0, ref color);
-            DA.GetData(1, ref wireframe);
-            DA.GetData(2, ref wireframeLinejoin);
-            DA.GetData(3, ref wireframeLinewidth);
+            if (!DA.GetData(1, ref wireframe))
+                wireframe = null;
+            if (!DA.GetData(2, ref map))
+                map = null;
 
             // Build the material object
             dynamic material = new ExpandoObject();
-            material.uuid = Guid.NewGuid();
-            material.type = "MeshBasicMaterial";
-            material.color = Convert.ToInt32(color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2"), 16);
+            material.Uuid = Guid.NewGuid();
+            material.Type = "MeshBasicMaterial";
+            material.Color = new DecimalColor(color).Color;
+
+            // If the material has map
+            if (map != null)
+                material.Map = map.Data.Uuid;
 
             // If the wireframe is set to true, add wireframe attributes
-            if (wireframe)
+            if (wireframe != null)
             {
-                material.wireframe = wireframe;
-                material.wireframeLinejoin = wireframeLinejoin;
-                material.wireframeLinewidth = wireframeLinewidth;
+                material.Wireframe = true;
+                material.WireframeLinejoin = wireframe.WireframeLinejoin;
+                material.WireframeLinewidth = wireframe.WireframeLinewidth;
             }
-            
-            //Wrap the material
-            MaterialWrapper wrapper = new MaterialWrapper(material);
 
-            // Serialize
-            string JSON = JsonConvert.SerializeObject(material);
+            // Build the file object
+            Material materialObject = new Material(material);
+            if (map != null)
+                materialObject.AddTexture(map);
 
             // Set the outputs
-            DA.SetData(0, JSON);
-            DA.SetData(1, wrapper);
+            DA.SetData(0, materialObject);
         }
 
         /// <summary>
@@ -102,7 +104,7 @@ namespace Triceratops
             {
                 //You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
-                return Properties.Resources.MeshBasicMaterial;
+                return Properties.Resources.Tri_MeshBasicMaterial;
             }
         }
 

@@ -46,7 +46,6 @@ namespace Triceratops
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("JSON", "J", "Material's JSON string", GH_ParamAccess.item);
             pManager.AddGenericParameter("Line Material", "M", "The line material object", GH_ParamAccess.item);
         }
 
@@ -70,21 +69,17 @@ namespace Triceratops
 
             // Build the material object
             dynamic material = new ExpandoObject();
-            material.uuid = Guid.NewGuid();
-            material.type = "LineDashedMaterial";
-            material.color = Convert.ToInt32(color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2"), 16);
-            material.linewidth = linewidth;
-            material.dashSize = dashSize;
-            material.gapSize = gapSize;
+            material.Uuid = Guid.NewGuid();
+            material.Type = "LineDashedMaterial";
+            material.Color = new DecimalColor(color).Color;
+            material.Linewidth = linewidth;
+            material.DashSize = dashSize;
+            material.GapSize = gapSize;
 
-            // Wrap the material
-            MaterialWrapper wrapper = new MaterialWrapper(material);
+            // Create the file
+            Material materialObject = new Material(material);
 
-            // Serialize
-            string JSON = JsonConvert.SerializeObject(material);
-
-            DA.SetData(0, JSON);
-            DA.SetData(1, wrapper);
+            DA.SetData(0, materialObject);
         }
 
         /// <summary>
@@ -96,7 +91,7 @@ namespace Triceratops
             {
                 //You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
-                return Properties.Resources.LineDashedMaterial;
+                return Properties.Resources.Tri_LineDashedMaterial;
             }
         }
 

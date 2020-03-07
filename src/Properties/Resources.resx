@@ -118,43 +118,100 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ExportJSON" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ExportJSON.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="triceratops_logo_small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\triceratops-logo-small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Line" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tri_AmbientLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_AmbientLight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LineBasicMaterial" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LineBasicMaterial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tri_CubeTexture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_CubeTexture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LineDashedMaterial" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LineDashedMaterial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tri_DirectionalLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_DirectionalLight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Mesh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mesh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tri_ExportJSON" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_ExportJSON.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MeshBasicMaterial" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MeshBasicMaterial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tri_Group" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_Group.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MeshColorFaces" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MeshColorFaces.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tri_HemisphereLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_HemisphereLight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MeshNormalMaterial" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MeshNormalMaterial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tri_Line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_Line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MeshPhongMaterial" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MeshPhongMaterial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tri_LineBasicMaterial" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_LineBasicMaterial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MeshStandardMaterial" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MeshStandardMaterial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tri_LineColorSegments" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_LineColorSegments.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MeshVertexColors" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MeshVertexColor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tri_LineDashedMaterial" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_LineDashedMaterial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="RelativePath" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RelativePath.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tri_LineVertexColor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_LineVertexColor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Scene" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Scene.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tri_Mesh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_Mesh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tri_MeshBasicMaterial" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_MeshBasicMaterial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tri_MeshColorFaces" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_MeshColorFaces.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tri_MeshNormalMaterial" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_MeshNormalMaterial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tri_MeshPhongMaterial" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_MeshPhongMaterial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tri_MeshStandardMaterial" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_MeshStandardMaterial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tri_MeshStandardMaterialMaps" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_MeshStandardMaterialMaps.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tri_MeshVertexColor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_MeshVertexColor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tri_PointLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_PointLight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tri_Points" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_Points.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tri_PointsMaterial" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_PointsMaterial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tri_PointsVertexColors" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_PointsVertexColors.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tri_RectAreaLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_RectAreaLight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tri_RelativePath" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_RelativePath.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tri_Scene" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_Scene.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tri_SpotLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_SpotLight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tri_TextFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_TextFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tri_Texture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tri_TextureSettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_TextureSettings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tri_Wireframe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_Wireframe.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -35,15 +35,16 @@ namespace Triceratops
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddColourParameter("Color", "C", "Material's color", GH_ParamAccess.item, Color.CornflowerBlue);
-            pManager.AddNumberParameter("Opacity", "O", "Material's opacity (0 = transparent, 1 = opaque)", GH_ParamAccess.item, 1);
-            pManager.AddNumberParameter("Roughness", "R", "Material's roughness", GH_ParamAccess.item, 1);
-            pManager.AddNumberParameter("Metalness", "M", "Material's metalness", GH_ParamAccess.item, 0.5);
-            pManager.AddColourParameter("Emissive", "Ec", "Emissive color", GH_ParamAccess.item, Color.Black);
-            pManager.AddNumberParameter("EmissiveIntensity", "Ei", "Emissive intensity", GH_ParamAccess.item, 1);
-            pManager.AddBooleanParameter("Wireframe", "W", "Display as wireframe", GH_ParamAccess.item, false);
-            pManager.AddTextParameter("WireframeLineJoin", "Wj", "Style of wireframe joins ('round', 'miter', or 'bevel'", GH_ParamAccess.item, "round");
-            pManager.AddNumberParameter("WireframeLineWidth", "Wl", "The width of the wireframe line", GH_ParamAccess.item, 1);
+            pManager.AddColourParameter("color", "C", "Material's color", GH_ParamAccess.item, Color.White);
+            pManager.AddNumberParameter("opacity", "O", "Material's opacity (0 = transparent, 1 = opaque)", GH_ParamAccess.item, 1);
+            pManager.AddNumberParameter("roughness", "R", "Material's roughness", GH_ParamAccess.item, 1);
+            pManager.AddNumberParameter("metalness", "M", "Material's metalness", GH_ParamAccess.item, 0.5);
+            pManager.AddColourParameter("emissive", "Ec", "Emissive color", GH_ParamAccess.item, Color.Black);
+            pManager.AddNumberParameter("emissiveIntensity", "Ei", "Emissive intensity", GH_ParamAccess.item, 1);
+            pManager.AddGenericParameter("wireframe", "W", "Display as wireframe", GH_ParamAccess.item);
+            pManager.AddGenericParameter("maps", "M", "Add material maps", GH_ParamAccess.item);
+            pManager[6].Optional = true;
+            pManager[7].Optional = true;
         }
 
         /// <summary>
@@ -51,7 +52,6 @@ namespace Triceratops
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("JSON", "J", "JSON string", GH_ParamAccess.item);
             pManager.AddGenericParameter("Material", "M", "Threejs material", GH_ParamAccess.item);
         }
 
@@ -66,45 +66,117 @@ namespace Triceratops
             double opacity = 1;
             double roughness = 1;
             double metalness = 0.5;
-            Color emissive = Color.Black;
+            Color emmisiveColor = Color.Black;
             double emissiveIntensity = 1;
-            bool wireframe = false;
-            string wireframeLinejoin = "round";
-            double wireframeLinewidth = 1;
+            WireframeSettings wireframe = null;
+            MeshStandardMaterialMaps materialMaps = null;
 
             // Reference inputs
             DA.GetData(0, ref color);
             DA.GetData(1, ref opacity);
             DA.GetData(2, ref roughness);
             DA.GetData(3, ref metalness);
-            DA.GetData(4, ref emissive);
+            DA.GetData(4, ref emmisiveColor);
             DA.GetData(5, ref emissiveIntensity);
-            DA.GetData(6, ref wireframe);
-            DA.GetData(7, ref wireframeLinejoin);
-            DA.GetData(8, ref wireframeLinewidth);
+            if (!DA.GetData(6, ref wireframe))
+                wireframe = null;
+            if (!DA.GetData(7, ref materialMaps))
+                materialMaps = null;
 
             // Create the material object
             dynamic material = new ExpandoObject();
-            material.uuid = Guid.NewGuid();
-            material.type = "MeshStandardMaterial";
-            material.color = Convert.ToInt32(color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2"), 16);
-            material.transparent = true;
-            material.opacity = opacity;
-            material.roughness = roughness;
-            material.metalness = metalness;
-            material.emissive = Convert.ToInt32(emissive.R.ToString("X2") + emissive.G.ToString("X2") + emissive.B.ToString("X2"), 16);
-            material.emissiveIntensity = emissiveIntensity;
-            material.wireframe = wireframe;
-            material.wireframeLinejoin = wireframeLinejoin;
-            material.wireframeLinewidth = wireframeLinewidth;
+            material.Uuid = Guid.NewGuid();
+            material.Type = "MeshStandardMaterial";
+            material.Color = new DecimalColor(color).Color;
+            material.Transparent = true;
+            material.Opacity = opacity;
+            material.Roughness = roughness;
+            material.Metalness = metalness;
+            material.Emissive = new DecimalColor(emmisiveColor).Color;
+            material.EmissiveIntensity = emissiveIntensity;
 
-            /// Wrap the material
-            MaterialWrapper wrapper = new MaterialWrapper(material);
+            // If the wireframe is set to true, add wireframe attributes
+            if (wireframe != null)
+            {
+                material.Wireframe = true;
+                material.WireframeLinejoin = wireframe.WireframeLinejoin;
+                material.WireframeLinewidth = wireframe.WireframeLinewidth;
+            }
 
-            string JSON = JsonConvert.SerializeObject(material);
+            // Build the file object
+            Material materialObject = new Material(material);
 
-            DA.SetData(0, JSON);
-            DA.SetData(1, wrapper);
+            // If there are material maps, add them
+            if (materialMaps != null)
+            {
+                if (materialMaps.Map != null)
+                {
+                    material.Map = materialMaps.Map.Data.Uuid;
+                    materialObject.AddTexture(materialMaps.Map);
+                }
+                    
+                if (materialMaps.AlphaMap != null)
+                {
+                    material.AlphaMap = materialMaps.AlphaMap.Data.Uuid;
+                    material.AlphaTest = materialMaps.AlphaTest;
+                    materialObject.AddTexture(materialMaps.AlphaMap);
+                }
+
+                if (materialMaps.BumpMap != null)
+                {
+                    material.BumpMap = materialMaps.BumpMap.Data.Uuid;
+                    material.BumpScale = materialMaps.BumpScale;
+                    materialObject.AddTexture(materialMaps.BumpMap);
+                }
+
+                if (materialMaps.DisplacementMap != null)
+                {
+                    material.DisplacementMap = materialMaps.DisplacementMap.Data.Uuid;
+                    material.DisplacementScale = materialMaps.DisplacementScale;
+                    materialObject.AddTexture(materialMaps.DisplacementMap);
+                }
+
+                if (materialMaps.NormalMap != null)
+                {
+                    material.NormalMap = materialMaps.NormalMap.Data.Uuid;
+                    materialObject.AddTexture(materialMaps.NormalMap);
+                }
+
+                if (materialMaps.EnvMap != null)
+                {
+                    material.EnvMap = materialMaps.EnvMap.Data.Uuid;
+                    material.EnvMapIntensity = materialMaps.EnvMapIntensity;
+                    materialObject.AddTexture(materialMaps.EnvMap);
+                }
+
+                if (materialMaps.RoughnessMap != null)
+                {
+                    material.RoughnessMap = materialMaps.RoughnessMap.Data.Uuid;
+                    materialObject.AddTexture(materialMaps.RoughnessMap);
+                }
+
+                if (materialMaps.MetalnessMap != null)
+                {
+                    material.MetalnessMap = materialMaps.MetalnessMap.Data.Uuid;
+                    materialObject.AddTexture(materialMaps.MetalnessMap);
+                }
+
+                if (materialMaps.AoMap != null)
+                {
+                    material.AoMap = materialMaps.AoMap.Data.Uuid;
+                    material.AoMapIntensity = materialMaps.AoMapIntensity;
+                    materialObject.AddTexture(materialMaps.AoMap);
+                }
+
+                if (materialMaps.EmissiveMap != null)
+                {
+                    material.EmissiveMap = materialMaps.EmissiveMap.Data.Uuid;
+                    materialObject.AddTexture(materialMaps.EmissiveMap);
+                }
+            }
+
+            // Set the outputs
+            DA.SetData(0, materialObject);
         }
 
         /// <summary>
@@ -116,7 +188,7 @@ namespace Triceratops
             {
                 //You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
-                return Properties.Resources.MeshStandardMaterial;
+                return Properties.Resources.Tri_MeshStandardMaterial;
             }
         }
 

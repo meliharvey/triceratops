@@ -38,6 +38,7 @@ namespace Triceratops
             pManager.AddMeshParameter("Mesh", "G", "Mesh geometry", GH_ParamAccess.item);
             pManager.AddTextParameter("Name", "N", "Name of mesh", GH_ParamAccess.item, "");
             pManager.AddGenericParameter("Material", "M", "Threejs material", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Decimal Accuracy", "D", "The number of decimal points in accuracy (impacts export size)", GH_ParamAccess.item, 3);
         }
 
         /// <summary>
@@ -45,7 +46,6 @@ namespace Triceratops
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddTextParameter("JSON", "J", "Geometry JSON", GH_ParamAccess.item);
             pManager.AddGenericParameter("Geometry", "G", "Mesh geometry", GH_ParamAccess.item);
         }
 
@@ -58,12 +58,14 @@ namespace Triceratops
             // Declare variables
             Rhino.Geometry.Mesh mesh = null;
             string name = "";
-            MaterialWrapper material = null;
+            Material material = null;
+            int decimalAccuracy = 3;
 
             // Reference the inputs
             DA.GetData(0, ref mesh);
             DA.GetData(1, ref name);
             DA.GetData(2, ref material);
+            DA.GetData(3, ref decimalAccuracy);
 
             // If the meshes have quads, triangulate them
             if (!mesh.Faces.ConvertQuadsToTriangles())
@@ -71,120 +73,46 @@ namespace Triceratops
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Error triangulating quad meshes. Try triangulating quads before feeding into this component.");
             };
 
-            // Fill the vertices and colors list
-            List<double> vertices = new List<double>();
-            List<double> colors = new List<double>();
-            for (int i = 0; i < mesh.Vertices.Count; i++)
-            {
-                vertices.Add(Math.Round(mesh.Vertices[i].X, 3) * -1);
-                vertices.Add(Math.Round(mesh.Vertices[i].Z, 3));
-                vertices.Add(Math.Round(mesh.Vertices[i].Y, 3));
-
-                colors.Add((float)mesh.VertexColors[i].R / 255);
-                colors.Add((float)mesh.VertexColors[i].G / 255);
-                colors.Add((float)mesh.VertexColors[i].B / 255);
-            }
-
-            // Create position object
-            dynamic position = new ExpandoObject();
-            position.itemSize = 3;
-            position.type = "Float32Array";
-            position.array = vertices;
-            position.normalized = false;
-
-            // Create color object
-            dynamic color = new ExpandoObject();
-            color.itemSize = 3;
-            color.type = "Float32Array";
-            color.array = colors;
-
-            // Fill the normals list
-            List<double> normals = new List<double>();
-            for (int i = 0; i < mesh.Normals.Count; i++)
-            {
-                normals.Add(Math.Round(mesh.Normals[i].X, 3) * -1);
-                normals.Add(Math.Round(mesh.Normals[i].Z, 3));
-                normals.Add(Math.Round(mesh.Normals[i].Y, 3));
-            }
-
-            // Create normal object
-            dynamic normal = new ExpandoObject();
-            normal.itemSize = 3;
-            normal.type = "Float32Array";
-            normal.array = normals;
-            normal.normalized = false;
-
-            // Fill the uvs list
-            List<double> uvs = new List<double>();
-            for (int i = 0; i < mesh.TextureCoordinates.Count; i++)
-            {
-                uvs.Add(Math.Round(mesh.TextureCoordinates[i].X, 3));
-                uvs.Add(Math.Round(mesh.TextureCoordinates[i].Y, 3));
-            }
-
-            // Create uv object
-            dynamic uv = new ExpandoObject();
-            uv.itemSize = 2;
-            uv.type = "Float32Array";
-            uv.array = uvs;
-            uv.normalized = false;
-
-            // Create attributes object
-            dynamic attributes = new ExpandoObject();
-            attributes.position = position;
-            attributes.color = color;
-            attributes.normal = normal;
-            attributes.uv = uv;
-
-            // Fill faces list
-            List<int> faces = new List<int>();
-            for (int i = 0; i < mesh.Faces.Count; i++)
-            {
-                faces.Add(mesh.Faces.GetFace(i).A);
-                faces.Add(mesh.Faces.GetFace(i).B);
-                faces.Add(mesh.Faces.GetFace(i).C);
-            }
-
-            // Create the index object
-            dynamic index = new ExpandoObject();
-            index.type = "Uint32Array";
-            index.array = faces;
-
-            // Create the data object
-            dynamic data = new ExpandoObject();
-            data.attributes = attributes;
-            data.index = index;
+            // Get the center of the object so the bufferGeometry can be given a local coordinates
+            Point3d center = mesh.GetBoundingBox(true).Center;
 
             /// Add the bufferGeometry
-            dynamic bufferGeometry = new ExpandoObject();
-            bufferGeometry.uuid = Guid.NewGuid(); ;
-            bufferGeometry.type = "BufferGeometry";
-            bufferGeometry.data = data;
+            BufferGeometry geometry = new BufferGeometry(mesh, center, decimalAccuracy, true);
 
             /// Add the child
-            dynamic child = new ExpandoObject();
-            child.uuid = Guid.NewGuid();
-            if (name.Length > 0) child.name = name;
-            child.type = "Mesh";
-            child.geometry = bufferGeometry.uuid;
-            child.material = material.Material.uuid;
-            child.matrix = new List<double> { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 };
-            child.castShadow = true;
-            child.receiveShadow = true;
+            dynamic meshObject = new ExpandoObject();
+            meshObject.Uuid = Guid.NewGuid();
+            if (name.Length > 0)
+                meshObject.name = name;
+            meshObject.Type = "Mesh";
+            meshObject.Geometry = geometry.Uuid;
+            meshObject.Material = material.Data.Uuid;
+            meshObject.Matrix = new Matrix(center).Array;
+            meshObject.CastShadow = true;
+            meshObject.ReceiveShadow = true;
 
             // Set the material to use vertex colors
-            material.Material.vertexColors = 2;
-            material.Material.color = "0xffffff";
+            material.Data.vertexColors = 2;
+            material.Data.color = "0xffffff";
 
-            /// Wrap the bufferGeometries and children to the wrapper
-            GeometryWrapper wrapper = new GeometryWrapper(bufferGeometry, child, material.Material);
+            // Create line object
+            Object3d object3d = new Object3d(meshObject);
+            object3d.AddGeometry(geometry);
 
-            // Create JSON string
-            string JSON = JsonConvert.SerializeObject(wrapper);
+            // If there is a material, add the material, textures, and images
+            if (material != null)
+            {
+                object3d.AddMaterial(material.Data);
+                if (material.Textures != null)
+                    foreach (dynamic texture in material.Textures)
+                        object3d.AddTexture(texture);
+                if (material.Images != null)
+                    foreach (dynamic image in material.Images)
+                        object3d.AddImage(image);
+            }
 
-            // Set outputs
-            DA.SetData(0, JSON);
-            DA.SetData(1, wrapper);
+            // Set output references
+            DA.SetData(0, object3d);
         }
 
         /// <summary>
@@ -196,7 +124,7 @@ namespace Triceratops
             {
                 //You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
-                return Properties.Resources.MeshVertexColors;
+                return Properties.Resources.Tri_MeshVertexColor;
             }
         }
 

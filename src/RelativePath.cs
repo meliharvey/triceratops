@@ -14,7 +14,7 @@ namespace Triceratops
         public RelativePath()
           : base("RelativePath", "Nickname",
               "Description",
-              "Triceratops", "Scene")
+              "Triceratops", "File Management")
         {
         }
 
@@ -62,7 +62,7 @@ namespace Triceratops
             {
                 //You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
-                return Properties.Resources.RelativePath;
+                return Properties.Resources.Tri_RelativePath;
             }
         }
 

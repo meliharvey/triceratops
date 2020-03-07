@@ -62,15 +62,17 @@ The example scene demonstrates how to export meshes with various materials and s
 The plugin was developed in Visual Studio using the [Grasshopper plugin template](https://marketplace.visualstudio.com/items?itemName=McNeel.GrasshopperAssemblyforv6). The [Visual Studio project folder](https://github.com/meliharvey/Triceratops/tree/master/threejs-exporter) is included in this repository.
 
 ## Next steps
-
+* Sprites
+* Geometry primitives (box, sphere, cone, etc.)
 * optional face indexing for meshes
-* vertex based line colors
+* meshLines
+* fat Lines
 * MeshPhongMaterial component
 * MeshLambertMaterial component
-* point light component
-* directional light component
-* area light component
-* userData component to be fed into the mesh component (i.e for coloring meshes on the fly in the browser)
+* userData component to be fed into the mesh and line component (i.e for coloring meshes on the fly in the browser)
 * camera component
 * scene attributes (background color, fog)
 * animate objects using GH slider to control the frames
+* clipping plane
+* depth texture
+* shaders

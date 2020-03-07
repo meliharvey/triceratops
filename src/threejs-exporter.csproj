@@ -63,25 +63,40 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes.cs" />
+    <Compile Include="CubeTexture_Component.cs" />
+    <Compile Include="Library.cs" />
+    <Compile Include="DirectionalLight.cs" />
     <Compile Include="LineBasicMaterial.cs" />
+    <Compile Include="LineVertexColors.cs" />
     <Compile Include="LineDashedMaterial.cs" />
+    <Compile Include="TextureSettings_Component.cs" />
     <Compile Include="MeshColorFaces.cs" />
     <Compile Include="MeshBasicMaterial.cs" />
     <Compile Include="MeshNormalMaterial.cs" />
     <Compile Include="MeshStandardMaterial.cs" />
-    <Compile Include="ExportJSON.cs" />
+    <Compile Include="MeshStandardMaterialMapsSettings.cs" />
+    <Compile Include="Wireframe.cs" />
+    <Compile Include="WriteText.cs" />
     <Compile Include="MeshVertexColors.cs" />
-    <Compile Include="Line.cs" />
+    <Compile Include="LineComponent.cs" />
+    <Compile Include="AmbientLight.cs" />
+    <Compile Include="HemisphereLight.cs" />
+    <Compile Include="SerializeObject.cs" />
+    <Compile Include="Points.cs" />
+    <Compile Include="PointLight.cs" />
+    <Compile Include="PointsMaterial.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RectAreaLight.cs" />
     <Compile Include="RelativePath.cs" />
     <Compile Include="Scene.cs" />
+    <Compile Include="SpotLight.cs" />
+    <Compile Include="Texture_Component.cs" />
     <Compile Include="threejs-exporterInfo.cs" />
-    <Compile Include="Mesh.cs" />
+    <Compile Include="MeshComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +155,222 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\LineDashedMaterial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AmbientLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DirectionalLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HemisphereLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PointLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Points.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PointsMaterial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RectAreaLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SpotLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\triceratops-logo-small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__AmbientLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__DirectionalLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__ExportJSON.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__Group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__HemisphereLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__Line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__LineBasicMaterial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__LineColorSegments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__LineDashedMaterial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__Mesh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__MeshBasicMaterial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__MeshColorFaces.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__MeshFaceAttributes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__MeshNormalMaterial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__MeshPhongMaterial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__MeshStandardMaterial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__MeshVertexColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__PointLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__Points.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__PointsMaterial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__PointsVertexColors.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__RectAreaLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__RelativePath.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__Scene.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__SpotLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__TextFile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\__Texture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_AmbientLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_DirectionalLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_ExportJSON.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_Group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_HemisphereLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_Line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_LineBasicMaterial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_LineColorSegments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_LineDashedMaterial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_LineVertexColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_Mesh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_MeshBasicMaterial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_MeshColorFaces.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_MeshNormalMaterial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_MeshPhongMaterial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_MeshStandardMaterial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_MeshVertexColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_PointLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_Points.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_PointsMaterial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_PointsVertexColors.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_RectAreaLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_RelativePath.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_Scene.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_SpotLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_TextFile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_Image - Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_Texture - Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_MeshStandardMaterialMaps.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_Wireframe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_MapSettings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_CubeTexture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_Texture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_TextureSettings.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

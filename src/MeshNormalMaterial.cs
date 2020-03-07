@@ -5,12 +5,13 @@ using System.Dynamic;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Triceratops
 {
     public class MeshNormalMaterial : GH_Component
     {
-        /// <summary>
+        /// <summary>C:\Users\dee\Desktop\Triceratops\src\MeshNormalMaterial.cs
         /// Initializes a new instance of the MeshNormalMaterial class.
         /// </summary>
         public MeshNormalMaterial()
@@ -44,7 +45,6 @@ namespace Triceratops
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("JSON", "J", "JSON string", GH_ParamAccess.item);
             pManager.AddGenericParameter("Material", "M", "Threejs material", GH_ParamAccess.item);
         }
 
@@ -66,19 +66,17 @@ namespace Triceratops
 
             // Create material object
             dynamic material = new ExpandoObject();
-            material.uuid = Guid.NewGuid();
-            material.type = "MeshNormalMaterial";
-            material.wireframe = wireframe;
-            material.wireframeLinejoin = wireframeLinejoin;
-            material.wireframeLinewidth = wireframeLinewidth;
+            material.Uuid = Guid.NewGuid();
+            material.Type = "MeshNormalMaterial";
+            material.Wireframe = wireframe;
+            material.WireframeLinejoin = wireframeLinejoin;
+            material.WireframeLinewidth = wireframeLinewidth;
 
-            /// Wrap the material
-            MaterialWrapper wrapper = new MaterialWrapper(material);
+            // Build the file object
+            Material materialObject = new Material(material);
 
-            string JSON = JsonConvert.SerializeObject(material);
-
-            DA.SetData(0, JSON);
-            DA.SetData(1, wrapper);
+            // Set the outputs
+            DA.SetData(0, materialObject);
         }
 
         /// <summary>
@@ -90,7 +88,7 @@ namespace Triceratops
             {
                 //You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
-                return Properties.Resources.MeshNormalMaterial;
+                return Properties.Resources.Tri_MeshNormalMaterial;
             }
         }
 
