@@ -33,8 +33,8 @@ Currently, meshes and lines are supported. The exporter uses the [bufferGeometry
 
 **Geometry**
 * ![Mesh](assets/Tri_Mesh.png) **Mesh** builds a Three.js mesh object with associated bufferGeometry. If no material is defined Three.js will automatically assign MeshBasicMaterial.
-* ![MeshVertexColors](assets/Tri_MeshVertexColors.png) **MeshVertexColors** builds a Three.js mesh object with vertex colors.
-* ![MeshColorFaces](assets/Tri_MeshColorFace.png) **Color Mesh Faces** unwelds all mesh edges and colors vertices based on mesh faces.
+* ![MeshVertexColors](assets/Tri_MeshVertexColor.png) **MeshVertexColors** builds a Three.js mesh object with vertex colors.
+* ![MeshColorFaces](assets/Tri_MeshColorFaces.png) **Color Mesh Faces** unwelds all mesh edges and colors vertices based on mesh faces.
 * ![Line](assets/Tri_Line.png) **Line** builds a Three.js line object and associated bufferGeometry. If no material is defined Three.js will automatically assign LineBasicMaterial.
 * ![LineColorSegments](assets/Tri_LineVertexColor.png) **LineVertexColor**  creates a Three.js line object that uses vertex colors.
 * ![Points](assets/Tri_Points.png) **Points** creates a Three.js points object with associated bufferGeometry. If no material is specified, Three.js will assign PointsMaterial on load.
@@ -58,9 +58,9 @@ Currently, meshes and lines are supported. The exporter uses the [bufferGeometry
 * ![AmbientLight](assets/Tri_AmbientLight.png) **AmbientLight** creates a Three.js AmbientLight object.
 * ![HemisphereLight](assets/Tri_HemisphereLight.png) **HemisphereLight** creates a Three.js HemisphereLight object.
 * ![DirectionalLight](assets/Tri_DirectionalLight.png) **DirectionalLight** creates a Three.js DirectionalLight object. Because of limitations with the Three.js ObjectLoader, the directional light's target is always set to the origin.
-* ![SpotLight](assets/Tri_SpotLight) **SpotLight** creates a Three.js SpotLight object. Because of limitations with the Three.js ObjectLoader, the spotlight's target is always set to the origin.
-* ![PointLight](assets/Tri_PointLight) **PointLight** creates a Three.js PointLight object.
-* ![RectAreaLight](assets/Tri_RectAreaLight) **RectAreaLight** creates a Three.js RectAreaLight object.
+* ![SpotLight](assets/Tri_SpotLight.png) **SpotLight** creates a Three.js SpotLight object. Because of limitations with the Three.js ObjectLoader, the spotlight's target is always set to the origin.
+* ![PointLight](assets/Tri_PointLight.png) **PointLight** creates a Three.js PointLight object.
+* ![RectAreaLight](assets/Tri_RectAreaLight.png) **RectAreaLight** creates a Three.js RectAreaLight object.
 
 **Scene**
 * ![Scene](assets/Tri_Scene.png) **Scene** creates a Scene object from one or more mesh geometries.
