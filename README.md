@@ -74,7 +74,15 @@ Currently, meshes and lines are supported. The exporter uses the [bufferGeometry
 
 The example scene demonstrates how to export meshes with various materials and settings.
 
-![example scene](assets/example_scene.PNG)
+![example scene](assets/example_scene.png)
+
+## Water Tower
+
+This is another scene demonstrating how Triceratops can be used to create an immersive environment. It uses a scene's background setting for a backdrop. Textures in the scene are PBR (physically based rendering) textures.
+
+![example scene](assets/water_tower_0.png)
+![example scene](assets/water_tower_1.png)
+![example scene](assets/water_tower_2.png)
 
 ## Development Environment
 
