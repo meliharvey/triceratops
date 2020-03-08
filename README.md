@@ -29,7 +29,7 @@ Currently, meshes and lines are supported. The exporter uses the [bufferGeometry
 
 ## Tools
 
-![Triceratops menu](assets/triceratops-panel.png)
+![Triceratops menu](assets/triceratops_panel.png)
 
 **Geometry**
 * ![Mesh](assets/Tri_Mesh.png) **Mesh** builds a Three.js mesh object with associated bufferGeometry. If no material is defined Three.js will automatically assign MeshBasicMaterial.
@@ -74,7 +74,7 @@ Currently, meshes and lines are supported. The exporter uses the [bufferGeometry
 
 The example scene demonstrates how to export meshes with various materials and settings.
 
-![example scene](assets/example_scene.png)
+![example scene](assets/example_scene_0.png)
 
 ## Water Tower
 
