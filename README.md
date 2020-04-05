@@ -33,11 +33,12 @@ Currently, meshes and lines are supported. The exporter uses the [bufferGeometry
 
 **Geometry**
 * ![Mesh](assets/Tri_Mesh.png) **Mesh** builds a Three.js mesh object with associated bufferGeometry. If no material is defined Three.js will automatically assign MeshBasicMaterial.
-* ![MeshVertexColors](assets/Tri_MeshVertexColor.png) **MeshVertexColors** builds a Three.js mesh object with vertex colors.
+* ![MeshVertexColors](assets/Tri_MeshVertexColors.png) **MeshVertexColors** builds a Three.js mesh object with vertex colors.
 * ![MeshColorFaces](assets/Tri_MeshColorFaces.png) **Color Mesh Faces** unwelds all mesh edges and colors vertices based on mesh faces.
 * ![Line](assets/Tri_Line.png) **Line** builds a Three.js line object and associated bufferGeometry. If no material is defined Three.js will automatically assign LineBasicMaterial.
-* ![LineColorSegments](assets/Tri_LineVertexColor.png) **LineVertexColor**  creates a Three.js line object that uses vertex colors.
+* ![LineColorSegments](assets/Tri_LineVertexColors.png) **LineVertexColor**  creates a Three.js line object that uses vertex colors.
 * ![Points](assets/Tri_Points.png) **Points** creates a Three.js points object with associated bufferGeometry. If no material is specified, Three.js will assign PointsMaterial on load.
+* ![Points](assets/Tri_PointsVertexColors.png) **PointsVertexColors** creates a Three.js points object where each point can be given a custom color. If no material is specified, Three.js will assign PointsMaterial on load.
 
 **Materials**
 * ![MeshNormalMaterial](assets/Tri_MeshNormalMaterial.png) **MeshNormalMaterial** creates a Three.js material object of the MeshNormalMaterial type. This material colors mesh faces based on their normal.
@@ -64,6 +65,7 @@ Currently, meshes and lines are supported. The exporter uses the [bufferGeometry
 
 **Scene**
 * ![Scene](assets/Tri_Scene.png) **Scene** creates a Scene object from one or more mesh geometries.
+* ![Scene](assets/Tri_Fog.png) **Fog** creates a Fog object.
 
 **File Management**
 * ![WriteTextFile](assets/Tri_TextFile.png) **WriteTextFile** writes a text file to a specific location.

@@ -103,6 +103,16 @@ namespace Triceratops.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Tri_Fog {
+            get {
+                object obj = ResourceManager.GetObject("Tri_Fog", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Tri_Group {
             get {
                 object obj = ResourceManager.GetObject("Tri_Group", resourceCulture);
@@ -143,16 +153,6 @@ namespace Triceratops.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Tri_LineColorSegments {
-            get {
-                object obj = ResourceManager.GetObject("Tri_LineColorSegments", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Tri_LineDashedMaterial {
             get {
                 object obj = ResourceManager.GetObject("Tri_LineDashedMaterial", resourceCulture);
@@ -163,7 +163,7 @@ namespace Triceratops.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Tri_LineVertexColor {
+        internal static System.Drawing.Bitmap Tri_LineVertexColors {
             get {
                 object obj = ResourceManager.GetObject("Tri_LineVertexColor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -243,7 +243,7 @@ namespace Triceratops.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Tri_MeshVertexColor {
+        internal static System.Drawing.Bitmap Tri_MeshVertexColors {
             get {
                 object obj = ResourceManager.GetObject("Tri_MeshVertexColor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));

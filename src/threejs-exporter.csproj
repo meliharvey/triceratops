@@ -65,25 +65,27 @@
   <ItemGroup>
     <Compile Include="CubeTexture_Component.cs" />
     <Compile Include="Library.cs" />
-    <Compile Include="DirectionalLight.cs" />
-    <Compile Include="LineBasicMaterial.cs" />
-    <Compile Include="LineVertexColors.cs" />
-    <Compile Include="LineDashedMaterial.cs" />
+    <Compile Include="DirectionalLight_Component.cs" />
+    <Compile Include="LineBasicMaterial_Component.cs" />
+    <Compile Include="LineVertexColors_Component.cs" />
+    <Compile Include="LineDashedMaterial_Component.cs" />
+    <Compile Include="Fog_Component.cs" />
+    <Compile Include="PointsVertexColors_Component.cs" />
     <Compile Include="TextureSettings_Component.cs" />
-    <Compile Include="MeshColorFaces.cs" />
-    <Compile Include="MeshBasicMaterial.cs" />
-    <Compile Include="MeshNormalMaterial.cs" />
-    <Compile Include="MeshStandardMaterial.cs" />
+    <Compile Include="MeshColorFaces_Component.cs" />
+    <Compile Include="MeshBasicMaterial_Component.cs" />
+    <Compile Include="MeshNormalMaterial_Component.cs" />
+    <Compile Include="MeshStandardMaterial_Component.cs" />
     <Compile Include="MeshStandardMaterialMapsSettings.cs" />
-    <Compile Include="Wireframe.cs" />
-    <Compile Include="WriteText.cs" />
-    <Compile Include="MeshVertexColors.cs" />
-    <Compile Include="LineComponent.cs" />
-    <Compile Include="AmbientLight.cs" />
-    <Compile Include="HemisphereLight.cs" />
-    <Compile Include="SerializeObject.cs" />
-    <Compile Include="Points.cs" />
-    <Compile Include="PointLight.cs" />
+    <Compile Include="Wireframe_Component.cs" />
+    <Compile Include="WriteText_Component.cs" />
+    <Compile Include="MeshVertexColors_Component.cs" />
+    <Compile Include="LineComponent_Component.cs" />
+    <Compile Include="AmbientLight_Component.cs" />
+    <Compile Include="HemisphereLight_Component.cs" />
+    <Compile Include="SerializeObject_Component.cs" />
+    <Compile Include="Points_Component.cs" />
+    <Compile Include="PointLight_Component.cs" />
     <Compile Include="PointsMaterial.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -92,11 +94,11 @@
     </Compile>
     <Compile Include="RectAreaLight.cs" />
     <Compile Include="RelativePath.cs" />
-    <Compile Include="Scene.cs" />
-    <Compile Include="SpotLight.cs" />
+    <Compile Include="Scene_Component.cs" />
+    <Compile Include="SpotLight_Component.cs" />
     <Compile Include="Texture_Component.cs" />
     <Compile Include="threejs-exporterInfo.cs" />
-    <Compile Include="MeshComponent.cs" />
+    <Compile Include="Mesh_Component.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -268,13 +270,31 @@
     <None Include="Resources\__Texture.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Tri_Image - Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_Texture - Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_MapSettings.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\Tri_AmbientLight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_CubeTexture.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Tri_DirectionalLight.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Tri_ExportJSON.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_Fog.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Tri_Group.png" />
@@ -287,9 +307,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Tri_LineBasicMaterial.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Tri_LineColorSegments.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Tri_LineDashedMaterial.png" />
@@ -316,6 +333,9 @@
     <None Include="Resources\Tri_MeshStandardMaterial.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Tri_MeshStandardMaterialMaps.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\Tri_MeshVertexColor.png" />
   </ItemGroup>
   <ItemGroup>
@@ -326,9 +346,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Tri_PointsMaterial.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Tri_PointsVertexColors.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Tri_RectAreaLight.png" />
@@ -346,31 +363,19 @@
     <None Include="Resources\Tri_TextFile.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Tri_Image - Copy.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Tri_Texture - Copy.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Tri_Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Tri_MeshStandardMaterialMaps.png" />
+    <None Include="Resources\Tri_TextureSettings.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Tri_Wireframe.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Tri_MapSettings.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Tri_CubeTexture.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Tri_Texture.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Tri_TextureSettings.png" />
+    <None Include="Resources\Tri_LineColorSegments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_PointsVertexColors.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

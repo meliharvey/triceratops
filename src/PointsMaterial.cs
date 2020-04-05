@@ -35,7 +35,7 @@ namespace Triceratops
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddColourParameter("Color", "C", "The color of the points", GH_ParamAccess.item);
+            pManager.AddColourParameter("Color", "C", "The color of the points", GH_ParamAccess.item, Color.White);
             pManager.AddNumberParameter("Size", "S", "The size of the points", GH_ParamAccess.item, 1);
             pManager.AddBooleanParameter("SizeAttenuation", "A", "Point size changes with depth if true", GH_ParamAccess.item, true);
             pManager.AddGenericParameter("Map", "M", "A texture for the point", GH_ParamAccess.item);
@@ -81,7 +81,7 @@ namespace Triceratops
             dynamic material = new ExpandoObject();
             material.Uuid = Guid.NewGuid();
             material.Type = "PointsMaterial";
-            material.Color = Convert.ToInt32(color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2"), 16);
+            material.Color = new DecimalColor(color).Color;
             material.Size = size;
             material.SizeAttenuation = sizeAttenuation;
             if (map != null)

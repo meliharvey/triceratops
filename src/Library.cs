@@ -55,6 +55,21 @@ namespace Triceratops
         }
     }
 
+    public class Fog
+    {
+        public string Type;
+        public int Color;
+        public double Near;
+        public double Far;
+
+        public Fog(Color color, double near, double far)
+        {
+            Type = "Fog";
+            Color = new DecimalColor(color).Color;
+            Near = near;
+            Far = far;
+        }
+    }
 
     public class Image
     {

@@ -133,6 +133,9 @@
   <data name="Tri_ExportJSON" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tri_ExportJSON.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Tri_Fog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tri_Fog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Tri_Group" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tri_Group.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -206,7 +209,7 @@
     <value>..\Resources\Tri_TextFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Tri_Texture" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Tri_Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Tri_Texture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Tri_TextureSettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tri_TextureSettings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
