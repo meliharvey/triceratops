@@ -36,9 +36,10 @@ Currently, meshes and lines are supported. The exporter uses the [bufferGeometry
 * ![MeshVertexColors](assets/Tri_MeshVertexColors.png) **MeshVertexColors** builds a Three.js mesh object with vertex colors.
 * ![MeshColorFaces](assets/Tri_MeshColorFaces.png) **Color Mesh Faces** unwelds all mesh edges and colors vertices based on mesh faces.
 * ![Line](assets/Tri_Line.png) **Line** builds a Three.js line object and associated bufferGeometry. If no material is defined Three.js will automatically assign LineBasicMaterial.
-* ![LineColorSegments](assets/Tri_LineVertexColors.png) **LineVertexColor**  creates a Three.js line object that uses vertex colors.
+* ![LineVertexColors](assets/Tri_LineVertexColors.png) **LineVertexColor**  creates a Three.js line object that uses vertex colors.
 * ![Points](assets/Tri_Points.png) **Points** creates a Three.js points object with associated bufferGeometry. If no material is specified, Three.js will assign PointsMaterial on load.
 * ![Points](assets/Tri_PointsVertexColors.png) **PointsVertexColors** creates a Three.js points object where each point can be given a custom color. If no material is specified, Three.js will assign PointsMaterial on load.
+* ![UserData](assets/Tri_UserData.png) **UserData** creates an object consisting of custom key, value pairs that can be attached to geometry using threejs' userData property. 
 
 **Materials**
 * ![MeshNormalMaterial](assets/Tri_MeshNormalMaterial.png) **MeshNormalMaterial** creates a Three.js material object of the MeshNormalMaterial type. This material colors mesh faces based on their normal.
