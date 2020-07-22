@@ -153,6 +153,16 @@ namespace Triceratops.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Tri_LineColorSegments {
+            get {
+                object obj = ResourceManager.GetObject("Tri_LineColorSegments", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Tri_LineDashedMaterial {
             get {
                 object obj = ResourceManager.GetObject("Tri_LineDashedMaterial", resourceCulture);
@@ -165,7 +175,7 @@ namespace Triceratops.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap Tri_LineVertexColors {
             get {
-                object obj = ResourceManager.GetObject("Tri_LineVertexColor", resourceCulture);
+                object obj = ResourceManager.GetObject("Tri_LineVertexColors", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -245,7 +255,7 @@ namespace Triceratops.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap Tri_MeshVertexColors {
             get {
-                object obj = ResourceManager.GetObject("Tri_MeshVertexColor", resourceCulture);
+                object obj = ResourceManager.GetObject("Tri_MeshVertexColors", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -323,6 +333,16 @@ namespace Triceratops.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Tri_ShadowMaterial {
+            get {
+                object obj = ResourceManager.GetObject("Tri_ShadowMaterial", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Tri_SpotLight {
             get {
                 object obj = ResourceManager.GetObject("Tri_SpotLight", resourceCulture);
@@ -356,6 +376,16 @@ namespace Triceratops.Properties {
         internal static System.Drawing.Bitmap Tri_TextureSettings {
             get {
                 object obj = ResourceManager.GetObject("Tri_TextureSettings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tri_UserData {
+            get {
+                object obj = ResourceManager.GetObject("Tri_UserData", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

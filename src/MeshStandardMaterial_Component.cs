@@ -21,7 +21,7 @@ namespace Triceratops
         {
         }
 
-        // Place in second partition
+        // Place in a partition
         public override GH_Exposure Exposure
         {
             get

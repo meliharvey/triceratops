@@ -12,16 +12,17 @@ function init() {
 
   renderer = new THREE.WebGLRenderer( { antialias: true } );
   renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.shadowMapEnabled = true;
   container.appendChild( renderer.domElement );
 
-  camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 );
-  camera.position.set( 20, 20, 20 );
+  camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 10000 );
+  camera.position.set( 40, 40, 40 );
 
   // controls
   controls = new THREE.OrbitControls( camera, renderer.domElement );
   controls.enableDamping = true;
   controls.dampingFactor = 0.1;
-  controls.screenSpacePanning = false;
+  controls.screenSpacePanning = true;
   controls.maxPolarAngle = Math.PI / 2;
 
   // this is required when using RectAreaLight
@@ -32,7 +33,7 @@ function init() {
 
   loader.load(
   	// resource URL
-  	"../assets/example_scene.json",
+  	"../assets/water_tower.json",
 
   	// onLoad callback
   	// Here the loaded data is assumed to be an object

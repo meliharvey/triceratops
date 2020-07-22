@@ -70,6 +70,8 @@
     <Compile Include="LineVertexColors_Component.cs" />
     <Compile Include="LineDashedMaterial_Component.cs" />
     <Compile Include="Fog_Component.cs" />
+    <Compile Include="ShadowMaterial_Component.cs" />
+    <Compile Include="UserData_Component.cs" />
     <Compile Include="PointsVertexColors_Component.cs" />
     <Compile Include="TextureSettings_Component.cs" />
     <Compile Include="MeshColorFaces_Component.cs" />
@@ -291,9 +293,6 @@
     <None Include="Resources\Tri_DirectionalLight.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Tri_ExportJSON.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Tri_Fog.png" />
   </ItemGroup>
   <ItemGroup>
@@ -351,9 +350,6 @@
     <None Include="Resources\Tri_RectAreaLight.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Tri_RelativePath.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Tri_Scene.png" />
   </ItemGroup>
   <ItemGroup>
@@ -375,7 +371,25 @@
     <None Include="Resources\Tri_LineColorSegments.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Tri_MeshVertexColors.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_ExportJSON.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_UserData.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_LineVertexColors.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\Tri_PointsVertexColors.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_ShadowMaterial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_RelativePath.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

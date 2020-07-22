@@ -23,6 +23,17 @@ namespace Triceratops
         }
     }
 
+
+    public class UserData
+    {
+        public dynamic properties;
+
+        public UserData(dynamic Properties)
+        {
+            properties = Properties;
+        }
+    }
+
     public class DecimalColor
     {
         public int Color;
@@ -623,6 +634,7 @@ namespace Triceratops
         public List<dynamic> Materials;
         public List<dynamic> Textures;
         public List<dynamic> Images;
+        public dynamic UserData;
 
         public Object3d(dynamic object3d)
         {

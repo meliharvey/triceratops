@@ -40,7 +40,9 @@ namespace Triceratops
             pManager.AddTextParameter("Name", "N", "Name of mesh", GH_ParamAccess.item, "");
             pManager.AddGenericParameter("Material", "M", "Threejs material", GH_ParamAccess.item);
             pManager.AddIntegerParameter("Decimal Accuracy", "D", "The number of decimal points in accuracy (impacts export size)", GH_ParamAccess.item, 3);
+            pManager.AddGenericParameter("UserData", "U", "Custom userData properties", GH_ParamAccess.item);
             pManager[2].Optional = true;
+            pManager[4].Optional = true;
         }
 
         /// <summary>
@@ -62,12 +64,14 @@ namespace Triceratops
             string name = "";
             Material material = null;
             int decimalAccuracy = 3;
+            UserData userData = null;
 
             // Reference the inputs
             DA.GetData(0, ref mesh);
             DA.GetData(1, ref name);
             DA.GetData(2, ref material);
             DA.GetData(3, ref decimalAccuracy);
+            DA.GetData(4, ref userData);
 
             // If the meshes have quads, triangulate them
             if (!mesh.Faces.ConvertQuadsToTriangles())
@@ -91,7 +95,13 @@ namespace Triceratops
             meshObject.CastShadow = true;
             meshObject.ReceiveShadow = true;
 
-            // Create line object
+            // If there is userData, add it to the object
+            if (userData != null)
+            {
+                meshObject.UserData = userData.properties;
+            }
+
+            // Create mesh object
             Object3d object3d = new Object3d(meshObject);
             object3d.AddGeometry(geometry);
             
@@ -108,6 +118,8 @@ namespace Triceratops
                     foreach (dynamic image in material.Images)
                         object3d.AddImage(image);
             }
+
+
 
             // Set outputs
             DA.SetData(0, object3d);
