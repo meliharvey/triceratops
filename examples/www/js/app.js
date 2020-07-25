@@ -33,7 +33,7 @@ function init() {
 
   loader.load(
   	// resource URL
-  	"../assets/water_tower.json",
+  	"../assets/chair.json",
 
   	// onLoad callback
   	// Here the loaded data is assumed to be an object

@@ -8,6 +8,9 @@ Triceratops is a Grasshopper plugin that exports geometry from Grasshopper to a 
 
 Triceratops is a Grasshopper exporter made for web developers that use Three.js. Therefore, the intention is to create a Grasshopper plugin that exposes the Three.js object classes and their attributes while using terminology the mirrors that of Three.js. Many components represent specific Three.js object classes in both name and attributes. For instance, the component [MeshStandardMaterial](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial) allows the user to create an object of this class and associate it a mesh object.
 
+## Acknowledgement
+This project was built with support from Kohn Pedersen Fox Associates PC.
+
 ## Install
 
 * Go to [Triceratops page at Food4Rhino](https://www.food4rhino.com/app/triceratops) and download the project .zip folder.
@@ -39,7 +42,7 @@ Currently, meshes and lines are supported. The exporter uses the [bufferGeometry
 * ![LineVertexColors](assets/Tri_LineVertexColors.png) **LineVertexColor**  creates a Three.js line object that uses vertex colors.
 * ![Points](assets/Tri_Points.png) **Points** creates a Three.js points object with associated bufferGeometry. If no material is specified, Three.js will assign PointsMaterial on load.
 * ![Points](assets/Tri_PointsVertexColors.png) **PointsVertexColors** creates a Three.js points object where each point can be given a custom color. If no material is specified, Three.js will assign PointsMaterial on load.
-* ![UserData](assets/Tri_UserData.png) **UserData** creates an object consisting of custom key, value pairs that can be attached to geometry using threejs' userData property. 
+* ![UserData](assets/Tri_UserData.png) **UserData** creates an object consisting of custom key, value pairs that can be attached to geometry using threejs' userData property.
 
 **Materials**
 * ![MeshNormalMaterial](assets/Tri_MeshNormalMaterial.png) **MeshNormalMaterial** creates a Three.js material object of the MeshNormalMaterial type. This material colors mesh faces based on their normal.
