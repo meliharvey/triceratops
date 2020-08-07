@@ -100,15 +100,13 @@ This example shows how various geometry types and lighting can work together to 
 The plugin was developed in Visual Studio using the [Grasshopper plugin template](https://marketplace.visualstudio.com/items?itemName=McNeel.GrasshopperAssemblyforv6). The [Visual Studio project folder](https://github.com/meliharvey/Triceratops/tree/master/threejs-exporter) is included in this repository.
 
 ## Next steps
+* Automatically produce entire viewer website as index.html
 * Sprites
 * Geometry primitives (box, sphere, cone, etc.)
+* 2 sided materials
 * optional face indexing for meshes
 * meshLines
 * fat Lines
-* MeshPhongMaterial component
-* MeshLambertMaterial component
-* userData component to be fed into the mesh and line component (i.e for coloring meshes on the fly in the browser)
-* camera component
 * animate objects using GH slider to control the frames
 * clipping plane
 * depth texture
