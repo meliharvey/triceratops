@@ -15,7 +15,7 @@ function init() {
   renderer.shadowMapEnabled = true;
   container.appendChild( renderer.domElement );
 
-  camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 10000 );
+  camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 10000 );
   camera.position.set( 40, 40, 40 );
 
   // controls
@@ -33,7 +33,7 @@ function init() {
 
   loader.load(
   	// resource URL
-  	"../assets/chair.json",
+  	"../assets/example_scene.json",
 
   	// onLoad callback
   	// Here the loaded data is assumed to be an object

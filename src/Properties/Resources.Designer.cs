@@ -133,6 +133,16 @@ namespace Triceratops.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Tri_ImageSettings {
+            get {
+                object obj = ResourceManager.GetObject("Tri_ImageSettings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Tri_Line {
             get {
                 object obj = ResourceManager.GetObject("Tri_Line", resourceCulture);

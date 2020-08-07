@@ -114,7 +114,7 @@ namespace Triceratops
                     break;
             }
 
-            // Build the texture object
+            // Build the texture settings object
             TextureSettings textureSettings = new TextureSettings();
             textureSettings.Repeat = new List<double> { repeatU, repeatV };
             textureSettings.Offset = new List<double> { offsetU, offsetV };

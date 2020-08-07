@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CubeTexture_Component.cs" />
+    <Compile Include="ImageSettings_Component.cs" />
     <Compile Include="Library.cs" />
     <Compile Include="DirectionalLight_Component.cs" />
     <Compile Include="LineBasicMaterial_Component.cs" />
@@ -88,14 +89,14 @@
     <Compile Include="SerializeObject_Component.cs" />
     <Compile Include="Points_Component.cs" />
     <Compile Include="PointLight_Component.cs" />
-    <Compile Include="PointsMaterial.cs" />
+    <Compile Include="PointsMaterial_Component.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RectAreaLight.cs" />
-    <Compile Include="RelativePath.cs" />
+    <Compile Include="RectAreaLight_Component.cs" />
+    <Compile Include="RelativePath_Component.cs" />
     <Compile Include="Scene_Component.cs" />
     <Compile Include="SpotLight_Component.cs" />
     <Compile Include="Texture_Component.cs" />
@@ -391,6 +392,9 @@
   <ItemGroup>
     <None Include="Resources\Tri_RelativePath.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tri_ImageSettings.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -412,5 +416,6 @@ Erase "$(TargetPath)"</PostBuildEvent>
     <StartArguments>
     </StartArguments>
     <StartAction>Program</StartAction>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 </Project>

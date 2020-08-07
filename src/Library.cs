@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 
 using Grasshopper.Kernel;
 using Rhino.Geometry;
@@ -106,6 +108,41 @@ namespace Triceratops
             Url = url;
         }
 
+        public Image(string path, double saturation=1, double contrast=0, double lightness=0)
+        {
+            // Get image type
+            string imageType = Path.GetExtension(path).Remove(0, 1);
+
+            // Read image
+            Bitmap bmp = new Bitmap(path);
+
+            // If values are not 1, update the image
+            if (saturation != 1)
+            {
+                bmp = DesaturateBitmap(bmp, saturation);
+            }
+
+            if (contrast != 0)
+            {
+                bmp = AdjustContrastBitmap(bmp, contrast);
+            }
+
+            if (lightness != 0)
+            {
+                bmp = LightenDarkenBitmap(bmp, lightness);
+            }
+
+            // Convert the image to a 64 bit representation
+            byte[] imageBytes = ImageToByte(bmp);
+            string base64ImageString = Convert.ToBase64String(imageBytes);
+
+            // Product image object
+            string url = "data:image/" + imageType + ";base64," + base64ImageString;
+
+            Uuid = Guid.NewGuid();
+            Url = url;
+        }
+
         // Convert bitmap to a byte array
         private static byte[] ImageToByte(System.Drawing.Image img)
         {
@@ -125,96 +162,195 @@ namespace Triceratops
         }
 
         // Desaturate the image
-        private static void DesaturateBitmap(ref Bitmap bmp, double saturation)
+        private static Bitmap DesaturateBitmap(Bitmap bmp, double saturation)
         {
-            // Ensure the saturation value falls between 0 and 1
-            WithinMinMaxBounds(ref saturation, 0, 1);
+            BitmapData sourceData = bmp.LockBits(
+                new Rectangle(0, 0, bmp.Width, bmp.Height),
+                ImageLockMode.ReadOnly,
+                PixelFormat.Format32bppArgb
+            );
 
-            // Get the height and width
-            int height = bmp.Height;
-            int width = bmp.Width;
+            byte[] pixelBuffer = new byte[sourceData.Stride * sourceData.Height];
 
-            // Loop over image pixels and desaturate values
-            for (int i = 0; i < height; i++)
+            Marshal.Copy(sourceData.Scan0, pixelBuffer, 0, pixelBuffer.Length);
+            bmp.UnlockBits(sourceData);
+
+            double b;
+            double g;
+            double r;
+
+            for (int k = 0; k + 4 < pixelBuffer.Length; k += 4)
             {
-                for (int j = 0; j < width; j++)
-                {
-                    Color color = bmp.GetPixel(i, j);
+                double avg = (pixelBuffer[k] + pixelBuffer[k+1] + pixelBuffer[k+2]) / 3;
+                double desaturation = avg * (1 - saturation);
 
-                    int a = color.A;
-                    int r = color.R;
-                    int g = color.G;
-                    int b = color.B;
+                b = (pixelBuffer[k] * saturation) + desaturation;
+                g = (pixelBuffer[k+1] * saturation) + desaturation;
+                r = (pixelBuffer[k+2] * saturation) + desaturation;
 
-                    double avg = (r + g + b) / 3;
-                    double desaturation = avg * (1 - saturation);
+                if (b > 255)
+                { b = 255; }
+                else if (b < 0)
+                { b = 0; }
 
-                    double newR = (r * saturation) + desaturation;
-                    double newG = (g * saturation) + desaturation;
-                    double newB = (b * saturation) + desaturation;
+                if (g > 255)
+                { g = 255; }
+                else if (g < 0)
+                { g = 0; }
 
-                    int newRint = Convert.ToInt32(Math.Round(newR));
-                    int newGint = Convert.ToInt32(Math.Round(newG));
-                    int newBint = Convert.ToInt32(Math.Round(newB));
+                if (r > 255)
+                { r = 255; }
+                else if (r < 0)
+                { r = 0; }
 
-                    bmp.SetPixel(i, j, Color.FromArgb(a, newRint, newGint, newBint));
-                }
+                pixelBuffer[k] = (byte)b;
+                pixelBuffer[k + 1] = (byte)g;
+                pixelBuffer[k + 2] = (byte)r;
             }
+
+            Bitmap resultBitmap = new Bitmap(bmp.Width, bmp.Height);
+            BitmapData resultData = resultBitmap.LockBits(new Rectangle(0, 0,
+                                        resultBitmap.Width, resultBitmap.Height),
+                                        ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+            Marshal.Copy(pixelBuffer, 0, resultData.Scan0, pixelBuffer.Length);
+            resultBitmap.UnlockBits(resultData);
+
+            return resultBitmap;
+        }
+
+        public static Bitmap AdjustContrastBitmap(Bitmap bmp, double contrast)
+        {
+            BitmapData sourceData = bmp.LockBits(
+                new Rectangle(0, 0, bmp.Width, bmp.Height),
+                ImageLockMode.ReadOnly, 
+                PixelFormat.Format32bppArgb
+            );
+
+            byte[] pixelBuffer = new byte[sourceData.Stride * sourceData.Height];
+
+            Marshal.Copy(sourceData.Scan0, pixelBuffer, 0, pixelBuffer.Length);
+            bmp.UnlockBits(sourceData);
+            double contrastLevel = Math.Pow(contrast + 1, 2);
+
+            double b;
+            double g;
+            double r;
+
+            for (int k = 0; k + 4 < pixelBuffer.Length; k += 4)
+            {
+                b = ((((pixelBuffer[k] / 255.0) - 0.5) * contrastLevel) + 0.5) * 255.0;
+                g = ((((pixelBuffer[k + 1] / 255.0) - 0.5) * contrastLevel) + 0.5) * 255.0;
+                r = ((((pixelBuffer[k + 2] / 255.0) - 0.5) * contrastLevel) + 0.5) * 255.0;
+
+                if (b > 255)
+                { b = 255; }
+                else if (b < 0)
+                { b = 0; }
+
+                if (g > 255)
+                { g = 255; }
+                else if (g < 0)
+                { g = 0; }
+
+                if (r > 255)
+                { r = 255; }
+                else if (r < 0)
+                { r = 0; }
+
+                pixelBuffer[k] = (byte)b;
+                pixelBuffer[k + 1] = (byte)g;
+                pixelBuffer[k + 2] = (byte)r;
+            }
+
+            Bitmap resultBitmap = new Bitmap(bmp.Width, bmp.Height);
+            BitmapData resultData = resultBitmap.LockBits(
+                new Rectangle(0, 0, resultBitmap.Width, resultBitmap.Height),
+                ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+            Marshal.Copy(pixelBuffer, 0, resultData.Scan0, pixelBuffer.Length);
+            resultBitmap.UnlockBits(resultData);
+
+            return resultBitmap;
         }
 
         // Lighten or darken the image
-        private static void LightenDarkenBitmap(ref Bitmap bmp, double lightness)
+        private static Bitmap LightenDarkenBitmap(Bitmap bmp, double lightness)
         {
-            // Make sure the lightness value falls between 0 and 2
-            WithinMinMaxBounds(ref lightness, 0, 2);
+            BitmapData sourceData = bmp.LockBits(
+                new Rectangle(0, 0, bmp.Width, bmp.Height),
+                ImageLockMode.ReadOnly,
+                PixelFormat.Format32bppArgb
+            );
 
-            // Ensure the value falls between 0 and 1
-            Math.Max(lightness, 0);
-            Math.Min(lightness, 2);
+            byte[] pixelBuffer = new byte[sourceData.Stride * sourceData.Height];
 
-            // Get the height and width
-            int height = bmp.Height;
-            int width = bmp.Width;
+            Marshal.Copy(sourceData.Scan0, pixelBuffer, 0, pixelBuffer.Length);
+            bmp.UnlockBits(sourceData);
 
-            // Loop over image pixels and desaturate values
-            for (int i = 0; i < height; i++)
+            double newB;
+            double newG;
+            double newR;
+
+            for (int k = 0; k + 4 < pixelBuffer.Length; k += 4)
             {
-                for (int j = 0; j < width; j++)
+                double b = pixelBuffer[k];
+                double g = pixelBuffer[k + 1];
+                double r = pixelBuffer[k + 2];
+
+                if (lightness <= 0)
                 {
-                    Color color = bmp.GetPixel(i, j);
-
-                    int a = color.A;
-                    int r = color.R;
-                    int g = color.G;
-                    int b = color.B;
-
-                    double newR;
-                    double newG;
-                    double newB;
-
-                    if (lightness <= 1)
-                    {
-                        newR = r * lightness;
-                        newG = g * lightness;
-                        newB = b * lightness;
-                    }
-                    else
-                    {
-                        newR = r + ((255 - r) * (lightness - 1));
-                        newG = g + ((255 - g) * (lightness - 1));
-                        newB = b + ((255 - b) * (lightness - 1));
-                    }
-
-                    int newRint = Convert.ToInt32(Math.Round(newR));
-                    int newGint = Convert.ToInt32(Math.Round(newG));
-                    int newBint = Convert.ToInt32(Math.Round(newB));
-
-                    bmp.SetPixel(i, j, Color.FromArgb(a, newRint, newGint, newBint));
+                    newB = b * (1 + lightness);
+                    newG = g * (1 + lightness);
+                    newR = r * (1 + lightness);
                 }
+                else
+                {
+                    newB = b + ((255 - b) * lightness);
+                    newG = g + ((255 - g) * lightness);
+                    newR = r + ((255 - r) * lightness);
+                }
+
+                if (newB > 255)
+                { newB = 255; }
+                else if (newB < 0)
+                { newB = 0; }
+
+                if (newG > 255)
+                { newG = 255; }
+                else if (newG < 0)
+                { newG = 0; }
+
+                if (newR > 255)
+                { newR = 255; }
+                else if (newR < 0)
+                { newR = 0; }
+
+                pixelBuffer[k] = (byte)newB;
+                pixelBuffer[k + 1] = (byte)newG;
+                pixelBuffer[k + 2] = (byte)newR;
             }
+
+            Bitmap resultBitmap = new Bitmap(bmp.Width, bmp.Height);
+            BitmapData resultData = resultBitmap.LockBits(
+                new Rectangle(0, 0, resultBitmap.Width, resultBitmap.Height),
+                ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+            Marshal.Copy(pixelBuffer, 0, resultData.Scan0, pixelBuffer.Length);
+            resultBitmap.UnlockBits(resultData);
+
+            return resultBitmap;
         }
     }
 
+    public class ImageSettings
+    {
+        public double Saturation;
+        public double Contrast;
+        public double Lightness;
+
+        public ImageSettings()
+        {
+
+        }
+    }
 
     public class CubeImage
     {

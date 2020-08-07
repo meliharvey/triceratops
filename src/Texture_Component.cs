@@ -36,8 +36,10 @@ namespace Triceratops
         {
             pManager.AddTextParameter("Image Path", "P", "The full path to the image", GH_ParamAccess.item);
             pManager.AddTextParameter("Name", "N", "Give the texture a name", GH_ParamAccess.item, "");
-            pManager.AddGenericParameter("Settings", "S", "Texture map settings", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Image Settings", "I", "Image settings", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Map Settings", "S", "Texture map settings", GH_ParamAccess.item);
             pManager[2].Optional = true;
+            pManager[3].Optional = true;
         }
 
         /// <summary>
@@ -57,16 +59,27 @@ namespace Triceratops
             // Declare variables
             string path = "";
             string name = "";
-            TextureSettings settings = null;
+            ImageSettings imageSettings = null;
+            TextureSettings textureSettings = null;
 
             // Reference the inputs
             DA.GetData(0, ref path);
             DA.GetData(1, ref name);
-            if(!DA.GetData(2, ref settings))
-                settings = null;
+            if(!DA.GetData(2, ref imageSettings))
+                imageSettings = null;
+            if (!DA.GetData(3, ref textureSettings))
+                textureSettings = null;
 
             // Create an image object
-            Image image = new Image(path);
+            Image image;
+            if (imageSettings != null)
+            {
+                image = new Image(path, imageSettings.Saturation, imageSettings.Contrast, imageSettings.Lightness);
+            }
+            else
+            {
+                image = new Image(path);
+            }
 
             // Build the texture object
             dynamic texture = new ExpandoObject();
@@ -90,13 +103,13 @@ namespace Triceratops
             texture.Image = image.Uuid;
 
             // If there are texture settings, apply them
-            if (settings != null)
+            if (textureSettings != null)
             {
-                texture.Repeat = settings.Repeat;
-                texture.Offset = settings.Offset;
-                texture.Center = settings.Center;
-                texture.Rotation = settings.Rotation;
-                texture.Wrap = settings.Wrap;
+                texture.Repeat = textureSettings.Repeat;
+                texture.Offset = textureSettings.Offset;
+                texture.Center = textureSettings.Center;
+                texture.Rotation = textureSettings.Rotation;
+                texture.Wrap = textureSettings.Wrap;
             }
 
             // Build the texture

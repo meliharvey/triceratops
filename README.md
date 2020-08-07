@@ -35,46 +35,47 @@ Currently, meshes and lines are supported. The exporter uses the [bufferGeometry
 ![Triceratops menu](assets/triceratops_panel.png)
 
 **Geometry**
-* ![Mesh](assets/Tri_Mesh.png) **Mesh** builds a Three.js mesh object with associated bufferGeometry. If no material is defined Three.js will automatically assign MeshBasicMaterial.
-* ![MeshVertexColors](assets/Tri_MeshVertexColors.png) **MeshVertexColors** builds a Three.js mesh object with vertex colors.
-* ![MeshColorFaces](assets/Tri_MeshColorFaces.png) **Color Mesh Faces** unwelds all mesh edges and colors vertices based on mesh faces.
-* ![Line](assets/Tri_Line.png) **Line** builds a Three.js line object and associated bufferGeometry. If no material is defined Three.js will automatically assign LineBasicMaterial.
-* ![LineVertexColors](assets/Tri_LineVertexColors.png) **LineVertexColor**  creates a Three.js line object that uses vertex colors.
-* ![Points](assets/Tri_Points.png) **Points** creates a Three.js points object with associated bufferGeometry. If no material is specified, Three.js will assign PointsMaterial on load.
-* ![Points](assets/Tri_PointsVertexColors.png) **PointsVertexColors** creates a Three.js points object where each point can be given a custom color. If no material is specified, Three.js will assign PointsMaterial on load.
-* ![UserData](assets/Tri_UserData.png) **UserData** creates an object consisting of custom key, value pairs that can be attached to geometry using threejs' userData property.
+* ![Mesh](assets/icons/Tri_Mesh.png) **Mesh** builds a Three.js mesh object with associated bufferGeometry. If no material is defined Three.js will automatically assign MeshBasicMaterial.
+* ![MeshVertexColors](assets/icons/Tri_MeshVertexColors.png) **MeshVertexColors** builds a Three.js mesh object with vertex colors.
+* ![MeshColorFaces](assets/icons/Tri_MeshColorFaces.png) **Color Mesh Faces** unwelds all mesh edges and colors vertices based on mesh faces.
+* ![Line](assets/icons/Tri_Line.png) **Line** builds a Three.js line object and associated bufferGeometry. If no material is defined Three.js will automatically assign LineBasicMaterial.
+* ![LineVertexColors](assets/icons/Tri_LineVertexColors.png) **LineVertexColor**  creates a Three.js line object that uses vertex colors.
+* ![Points](assets/icons/Tri_Points.png) **Points** creates a Three.js points object with associated bufferGeometry. If no material is specified, Three.js will assign PointsMaterial on load.
+* ![Points](assets/icons/Tri_PointsVertexColors.png) **PointsVertexColors** creates a Three.js points object where each point can be given a custom color. If no material is specified, Three.js will assign PointsMaterial on load.
+* ![UserData](assets/icons/Tri_UserData.png) **UserData** creates an object consisting of custom key, value pairs that can be attached to geometry using threejs' userData property.
 
 **Materials**
-* ![MeshNormalMaterial](assets/Tri_MeshNormalMaterial.png) **MeshNormalMaterial** creates a Three.js material object of the MeshNormalMaterial type. This material colors mesh faces based on their normal.
-* ![MeshBasicMaterial](assets/Tri_MeshBasicMaterial.png) **MeshBasicMaterial** creates a Three.js material object of the MeshBasicMaterial type. This material gives a mesh a solid color that does not react to scene lighting or shadows.
-* ![MeshPhongMaterial](assets/Tri_MeshPhongMaterial.png) **MeshPhongMaterial** creates a Three.js material object of the MeshPhongMaterial type. This material can simulate shiny materials and react to scene lighting and shadows.
-* ![MeshStandardMaterial](assets/Tri_MeshStandardMaterial.png) **MeshStandardMaterial** creates a Three.js material object of the MeshStandardMaterial class. This material uses physically based rendering to make a material that reacts to light in a realistic way.
-* ![LineBasicMaterial](assets/Tri_LineBasicMaterial.png) **LineBasicMaterial** creates a Three.js material object of the LineBasicMaterial class. This material can define a solid color for the line.
-* ![LineDashedMaterial](assets/Tri_LineDashedMaterial.png) **LineDashedMaterial** creates a Three.js material object of the LineDashedMaterial class. This material can define a dot-dash pattern for the line.
-* ![PointsMaterial](assets/Tri_PointsMaterial.png) **PointsMaterial** creates a PointsMaterial Three.js object. This material can be applied to Points geometry.
+* ![MeshNormalMaterial](assets/icons/Tri_MeshNormalMaterial.png) **MeshNormalMaterial** creates a Three.js material object of the MeshNormalMaterial type. This material colors mesh faces based on their normal.
+* ![MeshBasicMaterial](assets/icons/Tri_MeshBasicMaterial.png) **MeshBasicMaterial** creates a Three.js material object of the MeshBasicMaterial type. This material gives a mesh a solid color that does not react to scene lighting or shadows.
+* ![MeshPhongMaterial](assets/icons/Tri_MeshPhongMaterial.png) **MeshPhongMaterial** creates a Three.js material object of the MeshPhongMaterial type. This material can simulate shiny materials and react to scene lighting and shadows.
+* ![MeshStandardMaterial](assets/icons/Tri_MeshStandardMaterial.png) **MeshStandardMaterial** creates a Three.js material object of the MeshStandardMaterial class. This material uses physically based rendering to make a material that reacts to light in a realistic way.
+* ![LineBasicMaterial](assets/icons/Tri_LineBasicMaterial.png) **LineBasicMaterial** creates a Three.js material object of the LineBasicMaterial class. This material can define a solid color for the line.
+* ![LineDashedMaterial](assets/icons/Tri_LineDashedMaterial.png) **LineDashedMaterial** creates a Three.js material object of the LineDashedMaterial class. This material can define a dot-dash pattern for the line.
+* ![PointsMaterial](assets/icons/Tri_PointsMaterial.png) **PointsMaterial** creates a PointsMaterial Three.js object. This material can be applied to Points geometry.
 
 **Textures**
-* ![Texture](assets/Tri_Texture.png) **Texture** creates a Three.js Texture object.
-* ![CubeTexture](assets/Tri_CubeTexture.png) **CubeTexture** creates a Three.js CubeTexture object. This can be used to define a scenes background.
-* ![TextureSettings](assets/Tri_TextureSettings.png) **Texture Settings** creates a Three.js
-* ![MeshStandardMaterialMaps](assets/Tri_MeshStandardMaterialMaps.png) **MeshStandardMaterial Maps** allows a user to define texture maps for MeshStandardMaterial.
+* ![Texture](assets/icons/Tri_Texture.png) **Texture** creates a Three.js Texture object.
+* ![CubeTexture](assets/icons/Tri_CubeTexture.png) **CubeTexture** creates a Three.js CubeTexture object. This can be used to define a scenes background.
+* ![ImageSettings](assets/icons/Tri_ImageSettings.png) **Image Settings** allows you to change the saturation, contrast, and lightness of an image.
+* ![TextureSettings](assets/icons/Tri_TextureSettings.png) **Texture Settings** creates a Three.js
+* ![MeshStandardMaterialMaps](assets/icons/Tri_MeshStandardMaterialMaps.png) **MeshStandardMaterial Maps** allows a user to define texture maps for MeshStandardMaterial.
 
 **Lighting**
-* ![AmbientLight](assets/Tri_AmbientLight.png) **AmbientLight** creates a Three.js AmbientLight object.
-* ![HemisphereLight](assets/Tri_HemisphereLight.png) **HemisphereLight** creates a Three.js HemisphereLight object.
-* ![DirectionalLight](assets/Tri_DirectionalLight.png) **DirectionalLight** creates a Three.js DirectionalLight object. Because of limitations with the Three.js ObjectLoader, the directional light's target is always set to the origin.
-* ![SpotLight](assets/Tri_SpotLight.png) **SpotLight** creates a Three.js SpotLight object. Because of limitations with the Three.js ObjectLoader, the spotlight's target is always set to the origin.
-* ![PointLight](assets/Tri_PointLight.png) **PointLight** creates a Three.js PointLight object.
-* ![RectAreaLight](assets/Tri_RectAreaLight.png) **RectAreaLight** creates a Three.js RectAreaLight object.
+* ![AmbientLight](assets/icons/Tri_AmbientLight.png) **AmbientLight** creates a Three.js AmbientLight object.
+* ![HemisphereLight](assets/icons/Tri_HemisphereLight.png) **HemisphereLight** creates a Three.js HemisphereLight object.
+* ![DirectionalLight](assets/icons/Tri_DirectionalLight.png) **DirectionalLight** creates a Three.js DirectionalLight object. Because of limitations with the Three.js ObjectLoader, the directional light's target is always set to the origin.
+* ![SpotLight](assets/icons/Tri_SpotLight.png) **SpotLight** creates a Three.js SpotLight object. Because of limitations with the Three.js ObjectLoader, the spotlight's target is always set to the origin.
+* ![PointLight](assets/icons/Tri_PointLight.png) **PointLight** creates a Three.js PointLight object.
+* ![RectAreaLight](assets/icons/Tri_RectAreaLight.png) **RectAreaLight** creates a Three.js RectAreaLight object.
 
 **Scene**
-* ![Scene](assets/Tri_Scene.png) **Scene** creates a Scene object from one or more mesh geometries.
-* ![Scene](assets/Tri_Fog.png) **Fog** creates a Fog object.
+* ![Scene](assets/icons/Tri_Scene.png) **Scene** creates a Scene object from one or more mesh geometries.
+* ![Scene](assets/icons/Tri_Fog.png) **Fog** creates a Fog object.
 
 **File Management**
-* ![WriteTextFile](assets/Tri_TextFile.png) **WriteTextFile** writes a text file to a specific location.
-* ![ExportJSON](assets/Tri_ExportJSON.png) **ExportJSON** creates a JSON string from any Three.js Object3d.
-* ![RelativePath](assets/Tri_RelativePath.png) **RelativePath** generates the file path to the location where the grasshopper is saved.
+* ![WriteTextFile](assets/icons/Tri_TextFile.png) **WriteTextFile** writes a text file to a specific location.
+* ![ExportJSON](assets/icons/Tri_ExportJSON.png) **ExportJSON** creates a JSON string from any Three.js Object3d.
+* ![RelativePath](assets/icons/Tri_RelativePath.png) **RelativePath** generates the file path to the location where the grasshopper is saved.
 
 ## Example Scene
 
