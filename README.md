@@ -83,13 +83,17 @@ The example scene demonstrates how to export meshes with various materials and s
 
 ![example scene](assets/example_scene_0.png)
 
-## Water Tower
+## Chair
 
-This is another scene demonstrating how Triceratops can be used to create an immersive environment. It uses a scene's background setting for a backdrop. Textures in the scene are PBR (physically based rendering) textures.
+This example demonstrates some basic texture mapping.
 
-![example scene](assets/water_tower_0.png)
-![example scene](assets/water_tower_1.png)
-![example scene](assets/water_tower_2.png)
+![example scene](assets/chair.png)
+
+## House
+
+This example shows how various geometry types and lighting can work together to create an architectural scene.
+
+![example scene](assets/house.png)
 
 ## Development Environment
 
