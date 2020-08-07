@@ -28,7 +28,7 @@ The plugin produces as a JSON with using the [Three.js object scene format](http
 
 ## Supported Geometry
 
-Currently, meshes and lines are supported. The exporter uses the [bufferGeometry](https://threejs.org/docs/#api/en/core/BufferGeometry) format for defining geometry. All meshes use face indexing.
+Meshes, lines, and points are supported. The exporter uses the [bufferGeometry](https://threejs.org/docs/#api/en/core/BufferGeometry) format for defining geometry. All meshes use face indexing.
 
 ## Tools
 
