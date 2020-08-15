@@ -11,15 +11,21 @@
 				height: 100%;
 				width: 100%;
 			}
+			/* style the three.js container however your want */
 			#container {
 				height: 100%;
 				width: 100%;
 			}
+			canvas:focus {
+				outline: none;
+			}
 		</style>
 	</head>
 	<body>
+		<!-- this is the container where the three.js scene will go -->
 		<div id="container"></div>
 
+		<!-- these are the required scripts for the three.js scene -->
 		<script src="./js/three.min.js"></script>
 		<script src="./js/OrbitControls.js"></script>
 		<script src="./js/RectAreaLightUniformsLib.js"></script>
