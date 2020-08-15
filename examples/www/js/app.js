@@ -51,6 +51,23 @@ function init() {
 
   	// onProgress callback
   	function ( xhr ) {
+
+      var progress, textNode;
+
+      if (document.getElementById('progress')) {
+        document.getElementById('progress').remove();
+      }
+
+      progress = document.createElement('DIV');
+      progress.id = 'progress';
+      textNode = document.createTextNode( Math.round((xhr.loaded / xhr.total * 100)) + '% loaded');
+      progress.appendChild(textNode)
+      container.appendChild(progress)
+
+      if (xhr.loaded / xhr.total * 100 == 100) {
+        document.getElementById('progress').remove();
+      }
+
   		console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
   	},
 
