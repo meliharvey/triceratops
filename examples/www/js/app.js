@@ -51,23 +51,7 @@ function init() {
 
   	// onProgress callback
   	function ( xhr ) {
-
-      var progress, textNode;
-
-      if (document.getElementById('progress')) {
-        document.getElementById('progress').remove();
-      }
-
-      progress = document.createElement('DIV');
-      progress.id = 'progress';
-      textNode = document.createTextNode( Math.round((xhr.loaded / xhr.total * 100)) + '% loaded');
-      progress.appendChild(textNode)
-      container.appendChild(progress)
-
-      if (xhr.loaded / xhr.total * 100 == 100) {
-        document.getElementById('progress').remove();
-      }
-
+      progressText( xhr ) // delete this if you don't want the progress text
   		console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
   	},
 
@@ -80,6 +64,25 @@ function init() {
   // listen for changes to the window size to update the canvas
   window.addEventListener( 'resize', onWindowResize, false );
 
+}
+
+// addes progress text while the model is loading
+function progressText( xhr ) {
+  var progress, textNode;
+
+  if (document.getElementById('progress')) {
+    document.getElementById('progress').remove();
+  }
+
+  progress = document.createElement('DIV');
+  progress.id = 'progress';
+  textNode = document.createTextNode( 'loading: ' + Math.round((xhr.loaded / xhr.total * 100)) + '%');
+  progress.appendChild(textNode)
+  container.appendChild(progress)
+
+  if (xhr.loaded / xhr.total * 100 == 100) {
+    document.getElementById('progress').remove();
+  }
 }
 
 // function for handling resize events
