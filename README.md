@@ -47,7 +47,6 @@ Meshes, lines, and points are supported. The exporter uses the [bufferGeometry](
 **Materials**
 * ![MeshNormalMaterial](assets/icons/Tri_MeshNormalMaterial.png) **MeshNormalMaterial** creates a Three.js material object of the MeshNormalMaterial type. This material colors mesh faces based on their normal.
 * ![MeshBasicMaterial](assets/icons/Tri_MeshBasicMaterial.png) **MeshBasicMaterial** creates a Three.js material object of the MeshBasicMaterial type. This material gives a mesh a solid color that does not react to scene lighting or shadows.
-* ![MeshPhongMaterial](assets/icons/Tri_MeshPhongMaterial.png) **MeshPhongMaterial** creates a Three.js material object of the MeshPhongMaterial type. This material can simulate shiny materials and react to scene lighting and shadows.
 * ![MeshStandardMaterial](assets/icons/Tri_MeshStandardMaterial.png) **MeshStandardMaterial** creates a Three.js material object of the MeshStandardMaterial class. This material uses physically based rendering to make a material that reacts to light in a realistic way.
 * ![LineBasicMaterial](assets/icons/Tri_LineBasicMaterial.png) **LineBasicMaterial** creates a Three.js material object of the LineBasicMaterial class. This material can define a solid color for the line.
 * ![LineDashedMaterial](assets/icons/Tri_LineDashedMaterial.png) **LineDashedMaterial** creates a Three.js material object of the LineDashedMaterial class. This material can define a dot-dash pattern for the line.
