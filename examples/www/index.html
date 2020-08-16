@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Triceratops - Examples</title>
+		<meta charset="utf-8">
+		<meta name="author" content="Meli Harvey">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link rel="icon" href="./assets/triceratops-logo-small.png">
+		<style>
+			/* for full screen canvas, use these styles */
+			html, body {
+				margin: 0;
+				height: 100%;
+				width: 100%;
+			}
+			/* style the three.js container however your want */
+			#container {
+				height: 100%;
+				width: 100%;
+			}
+			/* removes outline when clicking on three.js canvas */
+			canvas:focus {
+				outline: none;
+			}
+			/* the style of the progress text */
+		  #progress {
+				position: absolute;
+	      top: 0;
+				margin: 6px;
+				color: grey;
+				font-family: 'Courier New', Courier, monospace;
+	      z-index: 2000;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- this is the container where the three.js scene will go -->
+		<div id="container"></div>
+
+		<!-- these are the required scripts for the three.js scene -->
+		<script src="./js/three.min.js"></script>
+		<script src="./js/OrbitControls.js"></script>
+		<script src="./js/RectAreaLightUniformsLib.js"></script>
+
+		<!-- this is your app's js file -->
+		<script src="./js/app.js"></script>
+	</body>
+</html>
