@@ -46,9 +46,7 @@ function init() {
   	// onLoad callback
   	function ( obj ) {
       // remove the loading text
-      if (xhr.loaded / xhr.total * 100 == 100) {
-        document.getElementById('progress').remove();
-      }
+      document.getElementById('progress').remove();
 
   		// assign the loaded object to the scene variable
   		scene = obj;
@@ -77,8 +75,6 @@ function progressText( xhr ) {
   if (document.getElementById('progress')) {
     document.getElementById('progress').remove();
   }
-
-  console.log(xhr)
 
   if (xhr.lengthComputable) {
     text = 'loading: ' + Math.round((xhr.loaded / xhr.total * 100)) + '%'
