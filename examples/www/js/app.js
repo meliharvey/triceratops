@@ -18,7 +18,7 @@ function init() {
   // create the rendered and set it to the height/width of the container
   renderer = new THREE.WebGLRenderer( { antialias: true } );
   renderer.setSize(container.clientWidth, container.clientHeight);
-  renderer.shadowMapEnabled = true; // if you don't want shadows, set to false
+  renderer.shadowMap.enabled = true; // if you don't want shadows, set to false
   renderer.setClearColor (0xeeeeee, 1); // this is the background color seen while scene is loading
   container.appendChild( renderer.domElement );
 
@@ -29,7 +29,7 @@ function init() {
   // camera controls to allow for orbiting
   controls = new THREE.OrbitControls( camera, renderer.domElement );
   controls.enableDamping = true; // creates a softer orbiting feel
-  controls.dampingFactor = 0.1;
+  controls.dampingFactor = 0.1; // determines how soft
   controls.screenSpacePanning = true;
   controls.maxPolarAngle = Math.PI / 2;
 
@@ -41,7 +41,7 @@ function init() {
 
   loader.load(
   	// resource URL
-  	"../assets/house.json",
+  	"./assets/house.json",
 
   	// onLoad callback
   	function ( obj ) {
@@ -66,7 +66,7 @@ function init() {
 
 }
 
-// addes progress text while the model is loading
+// adds progress text while the model is loading
 function progressText( xhr ) {
   var progress, textNode;
 
