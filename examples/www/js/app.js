@@ -76,7 +76,7 @@ function progressText( xhr ) {
   if (xhr.total > 0) {
     text = 'loading: ' + Math.round((xhr.loaded / xhr.total * 100)) + '%'
   } else {
-    text = 'loading: ' + xhr.loaded / 1000 + 'kb'
+    text = 'loading: ' + Math.round(xhr.loaded / 1000) + 'kb'
   }
 
   console.log(text);
