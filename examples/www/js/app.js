@@ -45,6 +45,9 @@ function init() {
 
   	// onLoad callback
   	function ( obj ) {
+      // remove the loading text
+      document.getElementById('progress').remove();
+
   		// assign the loaded object to the scene variable
   		scene = obj;
   	},
@@ -73,7 +76,7 @@ function progressText( xhr ) {
     document.getElementById('progress').remove();
   }
 
-  if (xhr.total > 0) {
+  if (xhr.lengthComputable) {
     text = 'loading: ' + Math.round((xhr.loaded / xhr.total * 100)) + '%'
   } else {
     text = 'loading: ' + Math.round(xhr.loaded / 1000) + 'kb'
@@ -86,10 +89,6 @@ function progressText( xhr ) {
   textNode = document.createTextNode(text);
   progress.appendChild(textNode)
   container.appendChild(progress)
-
-  if (xhr.loaded / xhr.total * 100 == 100) {
-    document.getElementById('progress').remove();
-  }
 }
 
 // function for handling resize events
