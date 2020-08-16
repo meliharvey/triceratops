@@ -51,7 +51,6 @@ function init() {
 
   	// onProgress callback
   	function ( xhr ) {
-      console.log(xhr)
       progressText( xhr ) // delete this if you don't want the progress text
   	},
 
@@ -74,7 +73,7 @@ function progressText( xhr ) {
     document.getElementById('progress').remove();
   }
 
-  if (xhr.total == 0) {
+  if (xhr.total > 0) {
     text = 'loading: ' + Math.round((xhr.loaded / xhr.total * 100)) + '%'
   } else {
     text = 'loading: ' + xhr.loaded + 'bytes'
