@@ -52,7 +52,6 @@ function init() {
   	// onProgress callback
   	function ( xhr ) {
       progressText( xhr ) // delete this if you don't want the progress text
-  		console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
   	},
 
   	// onError callback
@@ -68,15 +67,23 @@ function init() {
 
 // adds progress text while the model is loading
 function progressText( xhr ) {
-  var progress, textNode;
+  var progress, textNode, text;
 
   if (document.getElementById('progress')) {
     document.getElementById('progress').remove();
   }
 
+  if (xhr.total > 0) {
+    text = 'loading: ' + Math.round((xhr.loaded / xhr.total * 100)) + '%'
+  } else {
+    text = 'loading: ' + Math.round(xhr.loaded / 1000) + 'kb'
+  }
+
+  console.log(text);
+
   progress = document.createElement('DIV');
   progress.id = 'progress';
-  textNode = document.createTextNode( 'loading: ' + Math.round((xhr.loaded / xhr.total * 100)) + '%');
+  textNode = document.createTextNode(text);
   progress.appendChild(textNode)
   container.appendChild(progress)
 
