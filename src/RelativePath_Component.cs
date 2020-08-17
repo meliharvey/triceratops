@@ -43,14 +43,14 @@ namespace Triceratops
 
             if (OnPingDocument().FilePath != null)
             {
-                path = System.IO.Path.GetDirectoryName(OnPingDocument().FilePath);
+                path = System.IO.Path.GetDirectoryName(OnPingDocument().FilePath).Replace(@"\", "/"); //convert backslashes to forward
             }
             else
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "You must save the Grasshopper file for this component to return a file path.");
             }
 
-            DA.SetData(0, path);
+            DA.SetData(0, path); 
         }
 
         /// <summary>

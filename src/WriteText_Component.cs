@@ -61,7 +61,7 @@ namespace Triceratops
             DA.GetData(3, ref write);
 
             // Create filepath
-            string filePath = path + "\\" + name;
+            string filePath = path + "/" + name;
 
             // Write the JSON only when the run input is true
             if (write)
