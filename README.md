@@ -48,6 +48,8 @@ Meshes, lines, and points are supported. The exporter uses the [bufferGeometry](
 * ![MeshNormalMaterial](assets/icons/Tri_MeshNormalMaterial.png) **MeshNormalMaterial** creates a Three.js material object of the MeshNormalMaterial type. This material colors mesh faces based on their normal.
 * ![MeshBasicMaterial](assets/icons/Tri_MeshBasicMaterial.png) **MeshBasicMaterial** creates a Three.js material object of the MeshBasicMaterial type. This material gives a mesh a solid color that does not react to scene lighting or shadows.
 * ![MeshStandardMaterial](assets/icons/Tri_MeshStandardMaterial.png) **MeshStandardMaterial** creates a Three.js material object of the MeshStandardMaterial class. This material uses physically based rendering to make a material that reacts to light in a realistic way.
+* ![Wireframe](assets/icons/Tri_Wireframe.png) **WireframeSettings** can be added to other materials and so that only the wireframe of the object is visible.
+* ![ShadowMaterial](assets/icons/Tri_ShadowMaterial.png) **ShadowMaterial** creates a material that receives shadow, but is otherwise not visible.
 * ![LineBasicMaterial](assets/icons/Tri_LineBasicMaterial.png) **LineBasicMaterial** creates a Three.js material object of the LineBasicMaterial class. This material can define a solid color for the line.
 * ![LineDashedMaterial](assets/icons/Tri_LineDashedMaterial.png) **LineDashedMaterial** creates a Three.js material object of the LineDashedMaterial class. This material can define a dot-dash pattern for the line.
 * ![PointsMaterial](assets/icons/Tri_PointsMaterial.png) **PointsMaterial** creates a PointsMaterial Three.js object. This material can be applied to Points geometry.

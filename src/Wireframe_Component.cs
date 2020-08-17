@@ -12,7 +12,7 @@ namespace Triceratops
         /// Initializes a new instance of the Wireframe class.
         /// </summary>
         public Wireframe_Component()
-          : base("wireframe", "wireframe",
+          : base("wireframeSettings", "wireframe",
               "Change any material to a wireframe",
               "Triceratops", "Materials")
         {
