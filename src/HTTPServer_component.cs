@@ -61,7 +61,7 @@ namespace Triceratops
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Grasshopper is running on Mac");
             }
 
-            if (!IsAdministrator())
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) & !IsAdministrator())
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "SimpleHTTPServer won't work unless Rhino is run as Administrator.");
                 return;
