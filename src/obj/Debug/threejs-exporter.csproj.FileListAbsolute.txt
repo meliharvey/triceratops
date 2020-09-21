@@ -70,3 +70,4 @@ C:\Users\dee\Desktop\Triceratops\src\obj\Debug\threejs-exporter.csproj.CopyCompl
 C:\Users\dee\Desktop\Triceratops\src\obj\Debug\triceratops.dll
 C:\Users\dee\Desktop\Triceratops\src\obj\Debug\triceratops.pdb
 C:\Users\dee\Desktop\Triceratops\src\obj\Debug\threejs-exporter.csprojAssemblyReference.cache
+C:\Users\dee\Desktop\Triceratops\src\bin\System.Runtime.InteropServices.RuntimeInformation.dll

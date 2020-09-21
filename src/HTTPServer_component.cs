@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Security.Principal;
+using System.Runtime.InteropServices;
 
 using Grasshopper.Kernel;
 using Rhino.Geometry;
@@ -53,32 +54,38 @@ namespace Triceratops
             DA.GetData(1, ref port);
             DA.GetData(2, ref run);
 
-            if (IsAdministrator())
+            AddRuntimeMessage(GH_RuntimeMessageLevel.Remark, "Grasshopper is running on: " + RuntimeInformation.OSDescription.ToString());
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                if (run && server == null)
-                {
-                    server = new SimpleHTTPServer(@"" + path, port);
-                    AddRuntimeMessage(GH_RuntimeMessageLevel.Remark, "Server is running on port: " + port.ToString());
-                }
-                else if (run)
-                {
-                    AddRuntimeMessage(GH_RuntimeMessageLevel.Remark, "Server is running on port: " + port.ToString());
-                }
-                else if (server == null)
-                {
-                    AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Toggle run to true to start a new server.");
-                }
-                else
-                {
-                    server.Stop();
-                    server = null;
-                    AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Stopped the SimpleHTTPServer.");
-                    AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Toggle run to true to start a new server.");
-                }
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Grasshopper is running on Mac");
+            }
+
+            if (!IsAdministrator())
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "SimpleHTTPServer won't work unless Rhino is run as Administrator.");
+                return;
+            }
+
+            if (run && server == null)
+            {
+                server = new SimpleHTTPServer(@"" + path, port);
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Remark, "Server is running on port: " + port.ToString());
+            }
+            else if (run)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Remark, "Server is running on port: " + port.ToString());
+            }
+            else if (server == null)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Toggle run to true to start a new server.");
             }
             else
             {
-                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "SimpleHTTPServer won't work unless Rhino is run as Administrator.");
+                server.Stop();
+                server = null;
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Stopped the SimpleHTTPServer.");
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Toggle run to true to start a new server.");
             }
         }
 
