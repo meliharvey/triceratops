@@ -147,7 +147,7 @@ class SimpleHTTPServer
             }
             catch (Exception ex)
             {
- 
+                Console.WriteLine(ex);
             }
         }
     }
@@ -215,6 +215,4 @@ class SimpleHTTPServer
         _serverThread = new Thread(this.Listen);
         _serverThread.Start();
     }
- 
- 
 }

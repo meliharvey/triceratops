@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Security.Principal;
 using System.Runtime.InteropServices;
+using System.Net;
+using System.Net.Sockets;
+using System.Net.NetworkInformation;
 
 using Grasshopper.Kernel;
-using Rhino.Geometry;
 
 namespace Triceratops
 {
@@ -29,7 +31,6 @@ namespace Triceratops
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddTextParameter("Path", "P", "The path where the website's index.html is located.", GH_ParamAccess.item);
-            pManager.AddIntegerParameter("Port", "N", "The port number on which to serve the website", GH_ParamAccess.item, 3000);
             pManager.AddBooleanParameter("Run", "R", "Start or stop the SimpleHTTPServer", GH_ParamAccess.item, false);
         }
 
@@ -47,30 +48,45 @@ namespace Triceratops
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             string path = null;
-            int port = 3000;
             bool run = false;
 
             DA.GetData(0, ref path);
-            DA.GetData(1, ref port);
-            DA.GetData(2, ref run);
+            DA.GetData(1, ref run);
 
-            AddRuntimeMessage(GH_RuntimeMessageLevel.Remark, "Grasshopper is running on: " + RuntimeInformation.OSDescription.ToString());
+            // AddRuntimeMessage(GH_RuntimeMessageLevel.Remark, "Grasshopper is running on: " + RuntimeInformation.OSDescription.ToString());
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Grasshopper is running on Mac");
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "This component only runs on Windows.");
+                return;
             }
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) & !IsAdministrator())
             {
-                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "SimpleHTTPServer won't work unless Rhino is run as Administrator.");
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "This component won't work unless Rhino is run as Administrator.");
                 return;
+            }
+
+            int port = FreeTcpPort();
+
+            IPGlobalProperties ipGlobalProperties = IPGlobalProperties.GetIPGlobalProperties();
+            TcpConnectionInformation[] tcpConnInfoArray = ipGlobalProperties.GetActiveTcpConnections();
+
+            foreach (TcpConnectionInformation tcpi in tcpConnInfoArray)
+            {
+                if (tcpi.LocalEndPoint.Port == port)
+                {
+                    AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Port " + port.ToString() + " is already being used. Try another port.");
+                    return;
+                }
             }
 
             if (run && server == null)
             {
                 server = new SimpleHTTPServer(@"" + path, port);
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Remark, "Server is running on port: " + port.ToString());
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Remark, "Toggle back to false before closing document or server will stay running.");
+                System.Diagnostics.Process.Start("http://localhost:" + port.ToString());
             }
             else if (run)
             {
@@ -117,6 +133,15 @@ namespace Triceratops
                 WindowsPrincipal principal = new WindowsPrincipal(identity);
                 return principal.IsInRole(WindowsBuiltInRole.Administrator);
             }
+        }
+
+        static int FreeTcpPort()
+        {
+            TcpListener l = new TcpListener(IPAddress.Loopback, 0);
+            l.Start();
+            int port = ((IPEndPoint)l.LocalEndpoint).Port;
+            l.Stop();
+            return port;
         }
     }
 }

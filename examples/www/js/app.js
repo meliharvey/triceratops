@@ -5,6 +5,8 @@
 
 var camera, controls, scene, renderer;
 
+console.log(window.location.href)
+
 init();
 animate();
 
