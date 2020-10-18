@@ -77,6 +77,7 @@ Meshes, lines, and points are supported. The exporter uses the [bufferGeometry](
 * ![WriteTextFile](assets/icons/Tri_TextFile.png) **WriteTextFile** writes a text file to a specific location.
 * ![ExportJSON](assets/icons/Tri_ExportJSON.png) **ExportJSON** creates a JSON string from any Three.js Object3d.
 * ![RelativePath](assets/icons/Tri_RelativePath.png) **RelativePath** generates the file path to the location where the grasshopper is saved.
+* ![HTTPServer](assets/icons/Tri_HTTPServer.png) **HTTPServer** launches an HTTP server for testing your website (only works on Windows).
 
 ## Example Scene
 
