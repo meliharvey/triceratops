@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 using Grasshopper.Kernel;
-using Rhino.Geometry;
 
 namespace Triceratops
 {
@@ -58,6 +58,13 @@ namespace Triceratops
             DA.GetData(0, ref saturation);
             DA.GetData(1, ref contrast);
             DA.GetData(2, ref lightness);
+
+            // If not a Windows Machine
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "This component only runs on Windows.");
+                return;
+            }
 
             // Build the image settings object
             ImageSettings imageSettings = new ImageSettings();

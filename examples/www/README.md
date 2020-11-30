@@ -2,49 +2,50 @@
 
 This is a simple website that demonstrates how to load your 3d model as a three.js scene.
 
+## Swapping out models
+
+By default, the example site loads ```chair.json```. To update this to open a new model open Triceratops/examples/app.js and replace ```chair.json``` with the name of the json file you would like to load.
+```
+loader.load(
+  // resource URL
+  "./assets/[yourModelFile].json",
+```
+
 ## Testing with the Example Website
 
-You might be used to testing a static website simply by opening the html file in your browser. However, because three.js loads a JSON from JavaScript, your browser's CORS policy will likely reject the request. To get around this, there are 2 options below. I suggest using Option A, although you'll have to install python.
+You might be used to testing a simple static website simply by opening the html file in your browser. However, because three.js loads a JSON from JavaScript, your browser's CORS policy will likely reject the request. You will need to launch a server using the following steps.
 
-### Option A
-For this option you must have python installed on your machine. If you don't have python installed already, follow this guide on [installing python](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server) (if you have a Mac it has python installed natively).
-
+### For Windows
 #### Step 1
-Once python is installed on your machine, open the Windows Command Prompt and cd into the folder at ```/Triceratops/examples/www```.
+Search for Rhinoceros in the Windows search bar. When you see the Rhinoceros icon right click on it and select "Run as administrator".
 
 #### Step 2
-Once in this directory type ```python3 -m http.server 8000``` into the Command Prompt and press enter.
+Launch grasshopper and then navigate to Triceratops > File Management. Drag the HTTPServer ![HTTPServer](assets/icons/Tri_HTTPServer.png) component onto the Grasshopper canvas.
 
-...or if for some reason you're using Python 2 type ```python -m simpleHTTPServer 8000``` instead.
+#### Step 3
+The ```Path(P)``` input should be a string of the path to the directory where your index.html is located. The ```Run(R)``` should take a boolean toggle as an input.
 
-Press enter and python will start a basic web server and will print out something like:
+#### Step 4
+Toggle the boolean toggle to true and the server should start running and open a new tab in your browser with the website you're serving.
+
+#### Step 5
+Whenever you export a new version of the 3d model from Triceratops, refresh the page to reload the latest version of your model.
+
+
+### For Mac
+#### Step 1
+Use finder to navigate to your websites root folder (i.e. where index.html is located). For the Triceratops example files this is ```../Triceratops/examples/www```. Right click on the folder and click ```New Terminal at folder``` to open the terminal in this location.
+
+#### Step 2
+In the terminal, type ```python3 -m http.server 8000``` into the terminal and press enter (or if you're using python 2 for some reason ```python -m simpleHTTPServer 8000```).
+
+Python will launch a server and give you a message like this:
 ```
 Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
 ```
 
 #### Step 3
-Open your favorite browser, and in the search bar type ```localhost:8000```. Press enter and your website should open!
-
-#### Step 4
-Whenever you export a new version of the 3d model from Triceratops, refresh the page to reload the latest version of your model.
-
-### Option B
-If you don't have python installed, you can disable your browsers web security. In this example I use Chrome, but other browsers might have a similar feature.
-
-#### Step 1
-First, open up your Windows Command Prompt by typing ```cmd``` into the search box on the Windows menu.
-
-#### Step 2
-Copy and paste the following into the command prompt by right clicking within the command prompt. You may need to change the path if your chome.exe file is in a different location.
-
-```
-"(x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir=~/chromeTemp
-```
-
-Once this is copied in the command prompt, press enter on your keyboard. This is going to open a version of chrome that has web security disabled. Please DON'T open any websites other than the personal website that you're testing.
-
-#### Step 3
-Drag and drop the index.html into this new browser window.
+Open your favorite browser and in the search bar type ```localhost:8000```. Press enter and your website should open.
 
 #### Step 4
 Whenever you export a new version of the 3d model from Triceratops, refresh the page to reload the latest version of your model.

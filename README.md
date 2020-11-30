@@ -57,7 +57,7 @@ Meshes, lines, and points are supported. The exporter uses the [bufferGeometry](
 **Textures**
 * ![Texture](assets/icons/Tri_Texture.png) **Texture** creates a Three.js Texture object.
 * ![CubeTexture](assets/icons/Tri_CubeTexture.png) **CubeTexture** creates a Three.js CubeTexture object. This can be used to define a scenes background.
-* ![ImageSettings](assets/icons/Tri_ImageSettings.png) **Image Settings** allows you to change the saturation, contrast, and lightness of an image.
+* ![ImageSettings](assets/icons/Tri_ImageSettings.png) **Image Settings** allows you to change the saturation, contrast, and lightness of an image (only works on Windows).
 * ![TextureSettings](assets/icons/Tri_TextureSettings.png) **Texture Settings** creates a Three.js
 * ![MeshStandardMaterialMaps](assets/icons/Tri_MeshStandardMaterialMaps.png) **MeshStandardMaterial Maps** allows a user to define texture maps for MeshStandardMaterial.
 
@@ -77,6 +77,7 @@ Meshes, lines, and points are supported. The exporter uses the [bufferGeometry](
 * ![WriteTextFile](assets/icons/Tri_TextFile.png) **WriteTextFile** writes a text file to a specific location.
 * ![ExportJSON](assets/icons/Tri_ExportJSON.png) **ExportJSON** creates a JSON string from any Three.js Object3d.
 * ![RelativePath](assets/icons/Tri_RelativePath.png) **RelativePath** generates the file path to the location where the grasshopper is saved.
+* ![HTTPServer](assets/icons/Tri_HTTPServer.png) **HTTPServer** launches an HTTP server for testing your website (only works on Windows).
 
 ## Example Scene
 
