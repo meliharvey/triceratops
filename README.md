@@ -57,7 +57,7 @@ Meshes, lines, and points are supported. The exporter uses the [bufferGeometry](
 **Textures**
 * ![Texture](assets/icons/Tri_Texture.png) **Texture** creates a Three.js Texture object.
 * ![CubeTexture](assets/icons/Tri_CubeTexture.png) **CubeTexture** creates a Three.js CubeTexture object. This can be used to define a scenes background.
-* ![ImageSettings](assets/icons/Tri_ImageSettings.png) **Image Settings** allows you to change the saturation, contrast, and lightness of an image.
+* ![ImageSettings](assets/icons/Tri_ImageSettings.png) **Image Settings** allows you to change the saturation, contrast, and lightness of an image (only works on Windows).
 * ![TextureSettings](assets/icons/Tri_TextureSettings.png) **Texture Settings** creates a Three.js
 * ![MeshStandardMaterialMaps](assets/icons/Tri_MeshStandardMaterialMaps.png) **MeshStandardMaterial Maps** allows a user to define texture maps for MeshStandardMaterial.
 
