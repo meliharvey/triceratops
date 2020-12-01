@@ -4,7 +4,7 @@ This is a simple website that demonstrates how to load your 3d model as a three.
 
 ## Swapping out models
 
-By default, the example site loads ```chair.json```. To update this to open a new model open Triceratops/examples/app.js and replace ```chair.json``` with the name of the json file you would like to load.
+By default, the example site loads ```house.json```. To update this to open a new model open Triceratops/examples/app.js and replace ```house.json``` with the name of the json file you would like to load.
 ```
 loader.load(
   // resource URL
@@ -20,7 +20,7 @@ You might be used to testing a simple static website simply by opening the html 
 Search for Rhinoceros in the Windows search bar. When you see the Rhinoceros icon right click on it and select "Run as administrator".
 
 #### Step 2
-Launch grasshopper and then navigate to Triceratops > File Management. Drag the HTTPServer ![HTTPServer](assets/icons/Tri_HTTPServer.png) component onto the Grasshopper canvas.
+Launch grasshopper and then navigate to Triceratops > File Management. Drag the HTTPServer ![HTTPServer](../../assets/icons/Tri_HTTPServer.png) component onto the Grasshopper canvas. The example files already have this component set up on the Grasshopper canvas.
 
 #### Step 3
 The ```Path(P)``` input should be a string of the path to the directory where your index.html is located. The ```Run(R)``` should take a boolean toggle as an input.
@@ -37,7 +37,7 @@ Whenever you export a new version of the 3d model from Triceratops, refresh the 
 Use finder to navigate to your websites root folder (i.e. where index.html is located). For the Triceratops example files this is ```../Triceratops/examples/www```. Right click on the folder and click ```New Terminal at folder``` to open the terminal in this location.
 
 #### Step 2
-In the terminal, type ```python3 -m http.server 8000``` into the terminal and press enter (or if you're using python 2 for some reason ```python -m simpleHTTPServer 8000```).
+In the terminal, type ```python3 -m http.server 8000``` into the terminal and press enter (or if you're using python 2 type ```python -m simpleHTTPServer 8000```).
 
 Python will launch a server and give you a message like this:
 ```
