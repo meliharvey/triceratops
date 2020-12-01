@@ -163,22 +163,16 @@ namespace Triceratops
         // Desaturate the image
         private static Bitmap DesaturateBitmap(Bitmap bmp, double saturation)
         {
-            // Lock the bitmap's bits.
             BitmapData sourceData = bmp.LockBits(
                 new Rectangle(0, 0, bmp.Width, bmp.Height),
-                ImageLockMode.ReadWrite,
-                bmp.PixelFormat
+                ImageLockMode.ReadOnly,
+                PixelFormat.Format32bppArgb
             );
 
-            // Get the address of the first line.
-            IntPtr ptr = sourceData.Scan0;
+            byte[] pixelBuffer = new byte[sourceData.Stride * sourceData.Height];
 
-            // Declare an array to hold the bytes of the bitmap.
-            int bytes = Math.Abs(sourceData.Stride) * bmp.Height;
-            byte[] pixelBuffer = new byte[bytes];
-
-            // Copy the RGB values into the array.
-            Marshal.Copy(ptr, pixelBuffer, 0, bytes);
+            Marshal.Copy(sourceData.Scan0, pixelBuffer, 0, pixelBuffer.Length);
+            bmp.UnlockBits(sourceData);
 
             double b;
             double g;
@@ -213,33 +207,28 @@ namespace Triceratops
                 pixelBuffer[k + 2] = (byte)r;
             }
 
-            // Copy the RGB values back to the bitmap
-            Marshal.Copy(pixelBuffer, 0, ptr, bytes);
+            Bitmap resultBitmap = new Bitmap(bmp.Width, bmp.Height);
+            BitmapData resultData = resultBitmap.LockBits(new Rectangle(0, 0,
+                                        resultBitmap.Width, resultBitmap.Height),
+                                        ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+            Marshal.Copy(pixelBuffer, 0, resultData.Scan0, pixelBuffer.Length);
+            resultBitmap.UnlockBits(resultData);
 
-            // Unlock the bits.
-            bmp.UnlockBits(sourceData);
-
-            return bmp;
+            return resultBitmap;
         }
 
         public static Bitmap AdjustContrastBitmap(Bitmap bmp, double contrast)
         {
-            // Lock the bitmap's bits.
             BitmapData sourceData = bmp.LockBits(
                 new Rectangle(0, 0, bmp.Width, bmp.Height),
-                ImageLockMode.ReadWrite,
-                bmp.PixelFormat
+                ImageLockMode.ReadOnly,
+                PixelFormat.Format32bppArgb
             );
 
-            // Get the address of the first line.
-            IntPtr ptr = sourceData.Scan0;
+            byte[] pixelBuffer = new byte[sourceData.Stride * sourceData.Height];
 
-            // Declare an array to hold the bytes of the bitmap.
-            int bytes = Math.Abs(sourceData.Stride) * bmp.Height;
-            byte[] pixelBuffer = new byte[bytes];
-
-            // Copy the RGB values into the array.
-            Marshal.Copy(ptr, pixelBuffer, 0, bytes);
+            Marshal.Copy(sourceData.Scan0, pixelBuffer, 0, pixelBuffer.Length);
+            bmp.UnlockBits(sourceData);
 
             double contrastLevel = Math.Pow(contrast + 1, 2);
 
@@ -273,34 +262,29 @@ namespace Triceratops
                 pixelBuffer[k + 2] = (byte)r;
             }
 
-            // Copy the RGB values back to the bitmap
-            Marshal.Copy(pixelBuffer, 0, ptr, bytes);
+            Bitmap resultBitmap = new Bitmap(bmp.Width, bmp.Height);
+            BitmapData resultData = resultBitmap.LockBits(new Rectangle(0, 0,
+                                        resultBitmap.Width, resultBitmap.Height),
+                                        ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+            Marshal.Copy(pixelBuffer, 0, resultData.Scan0, pixelBuffer.Length);
+            resultBitmap.UnlockBits(resultData);
 
-            // Unlock the bits.
-            bmp.UnlockBits(sourceData);
-
-            return bmp;
+            return resultBitmap;
         }
 
         // Lighten or darken the image
         private static Bitmap LightenDarkenBitmap(Bitmap bmp, double lightness)
         {
-            // Lock the bitmap's bits.
             BitmapData sourceData = bmp.LockBits(
                 new Rectangle(0, 0, bmp.Width, bmp.Height),
-                ImageLockMode.ReadWrite,
-                bmp.PixelFormat
+                ImageLockMode.ReadOnly,
+                PixelFormat.Format32bppArgb
             );
 
-            // Get the address of the first line.
-            IntPtr ptr = sourceData.Scan0;
+            byte[] pixelBuffer = new byte[sourceData.Stride * sourceData.Height];
 
-            // Declare an array to hold the bytes of the bitmap.
-            int bytes = Math.Abs(sourceData.Stride) * bmp.Height;
-            byte[] pixelBuffer = new byte[bytes];
-
-            // Copy the RGB values into the array.
-            Marshal.Copy(ptr, pixelBuffer, 0, bytes);
+            Marshal.Copy(sourceData.Scan0, pixelBuffer, 0, pixelBuffer.Length);
+            bmp.UnlockBits(sourceData);
 
             double newB;
             double newG;
@@ -345,13 +329,14 @@ namespace Triceratops
                 pixelBuffer[k + 2] = (byte)newR;
             }
 
-            // Copy the RGB values back to the bitmap
-            Marshal.Copy(pixelBuffer, 0, ptr, bytes);
+            Bitmap resultBitmap = new Bitmap(bmp.Width, bmp.Height);
+            BitmapData resultData = resultBitmap.LockBits(new Rectangle(0, 0,
+                                        resultBitmap.Width, resultBitmap.Height),
+                                        ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+            Marshal.Copy(pixelBuffer, 0, resultData.Scan0, pixelBuffer.Length);
+            resultBitmap.UnlockBits(resultData);
 
-            // Unlock the bits.
-            bmp.UnlockBits(sourceData);
-
-            return bmp;
+            return resultBitmap;
         }
     }
 
