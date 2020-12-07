@@ -13,6 +13,8 @@ This project was built with support from Kohn Pedersen Fox Associates PC.
 
 ## Install
 
+Watch the [tutorial video here](https://www.youtube.com/watch?v=LNoh1rFb1DI&t=532s) or follow the steps below:
+
 * Go to [Triceratops page at Food4Rhino](https://www.food4rhino.com/app/triceratops) and download the project .zip folder.
 * Extract the files from the .zip folder.
 * Place the .gha file in your grasshopper components folder. This can be found from Grasshopper at:
