@@ -20,6 +20,7 @@ function init() {
   // create the rendered and set it to the height/width of the container
   renderer = new THREE.WebGLRenderer( { antialias: true } );
   renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
   renderer.shadowMap.enabled = true; // if you don't want shadows, set to false
   renderer.setClearColor (0xeeeeee, 1); // this is the background color seen while scene is loading
   container.appendChild( renderer.domElement );
